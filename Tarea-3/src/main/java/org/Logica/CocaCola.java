@@ -4,8 +4,8 @@ package org.Logica;
  */
 public class CocaCola extends Bebida {
     /** Constructor que por defecto solo inicializa*/
-    public CocaCola() {
-        super();
+    public CocaCola(String s) {
+        super(s);
     }
     /** Metodo que entrega el nombre del producto consumido
      * @return Nombre del producto entregado

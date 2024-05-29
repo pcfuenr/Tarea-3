@@ -4,8 +4,8 @@ package org.Logica;
  */
 public abstract class Bebida extends Producto {
     /** Constructor que por defecto solo inicializa*/
-    public Bebida() {
-        super();
+    public Bebida(String s) {
+        super(s);
     }
     /** Metodo abstracto que se implementa en las subclases */
     public abstract String consumir();

@@ -4,8 +4,8 @@ package org.Logica;
  */
 public class Fanta extends Bebida{
     /** Constructor que por defecto solo inicializa*/
-    public Fanta(){
-        super();
+    public Fanta(String s){
+        super(s);
     }
     /** Metodo que entrega el nombre del producto consumido
      * @return Nombre del producto entregado
