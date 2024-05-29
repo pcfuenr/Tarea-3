@@ -13,8 +13,8 @@ public abstract class Producto {
     /** Método que devuelve la serie del objeto creado
      * @return Número de serie
      */
-    public Producto getSerie() {
-        return this;
+    public String getSerie() {
+        return this.serie;
     }
     /** Método abstracto que despues sirve para devolver que producto se ha consumido/devuelto */
     public abstract String consumir();
