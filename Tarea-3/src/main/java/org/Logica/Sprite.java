@@ -5,8 +5,8 @@ package org.Logica;
  */
 public class Sprite extends Bebida {
     /** Constructor que por defecto solo inicializa*/
-    public Sprite() {
-        super();
+    public Sprite(String s) {
+        super(s);
     }
     /** Metodo que entrega el nombre del producto consumido
      * @return Nombre del producto entregado

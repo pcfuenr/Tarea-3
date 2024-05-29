@@ -4,8 +4,8 @@ package org.Logica;
  */
 public class Snickers extends Dulce{
     /** Constructor que por defecto solo inicializa*/
-    public Snickers() {
-        super();
+    public Snickers(String s) {
+        super(s);
     }
     /** Metodo que entrega el nombre del producto consumido
      * @return Nombre del producto entregado

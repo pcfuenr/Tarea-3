@@ -21,20 +21,21 @@ public class Expendedor {
 
     /**
      * Constructor, crea y llena los depósitos de cada artículo
+     * Cada Producto tiene un número de serie compuesto por su número identificador y un número que indica el orden en que se crearon
      * @param numProductos cantidad de productos en cada depósito
      */
     public Expendedor(int numProductos) {
         for (int i = 0; i < numProductos; i++) {
             Producto p = null;
-            p = new CocaCola();
+            p = new CocaCola("" + Articulos.COCA.ordinal() + i);
             coca.addObject(p);
-            p = new Sprite();
+            p = new Sprite("" + Articulos.SPRITE.ordinal() + i);
             sprite.addObject(p);
-            p = new Fanta();
+            p = new Fanta("" + Articulos.FANTA.ordinal() + i);
             fanta.addObject(p);
-            p = new Snickers();
+            p = new Snickers("" + Articulos.SNICKERS.ordinal() + i);
             snickers.addObject(p);
-            p = new Super8();
+            p = new Super8("" + Articulos.SUPER8.ordinal() + i);
             super8.addObject(p);
         }
     }
