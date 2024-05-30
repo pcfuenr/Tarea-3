@@ -19,7 +19,8 @@ public class Comprador {
      * @throws PagoInsuficienteException propaga el throw de comprarProducto
      */
     public Comprador(Moneda m, int cualProducto, Expendedor exp) throws PagoIncorrectoException, NoHayProductoException, PagoInsuficienteException  {
-        Producto p = exp.comprarProducto(m, cualProducto);
+        exp.comprarProducto(m, cualProducto);
+        Producto p = exp.getProducto();
         sonido = p.consumir();
         Moneda m1 = null;
         while (true) {

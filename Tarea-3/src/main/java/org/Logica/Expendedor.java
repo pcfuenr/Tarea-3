@@ -18,6 +18,8 @@ public class Expendedor {
     private Deposito<Moneda> monedas = new Deposito<>();
     /** Deposito de monedas para almacenar el vuelto */
     private Deposito<Moneda> monVu = new Deposito<>();
+    /** Depósito individual donde "cae" el producto comprado */
+    private Producto producto = null;
 
     /**
      * Constructor, crea y llena los depósitos de cada artículo
@@ -44,12 +46,11 @@ public class Expendedor {
      * Simula la compra en una máquina expendedora, se entrega una moneda y se selecciona un producto, si la compra es exitosa entonces devuelve el producto
      * @param m moneda para comprar
      * @param cual indica qué producto se desea comprar
-     * @return producto seleccionado
      * @throws PagoIncorrectoException puede lanzar esta excepción si se trata de comprar con una moneda null
      * @throws NoHayProductoException puede lanzar esta excepción si el depósito del producto seleccionado está vacío o si el número de seleccion no corresponde a ningún producto
      * @throws PagoInsuficienteException puede lanzar esta excepción si la moneda entregada no alcanza para comprar el producto
      */
-    public Producto comprarProducto(Moneda m, int cual) throws PagoIncorrectoException, NoHayProductoException, PagoInsuficienteException {
+    public void comprarProducto(Moneda m, int cual) throws PagoIncorrectoException, NoHayProductoException, PagoInsuficienteException {
         if (m == null) {
             throw new PagoIncorrectoException("Error, no se ha entregado moneda");
         } else {
@@ -69,10 +70,10 @@ public class Expendedor {
                             monVu.addObject(m100);
                         }
                         monedas.addObject(m);
-                        return coca.getObject();
+                        producto = coca.getObject();
                     } else {
                         monedas.addObject(m);
-                        return coca.getObject();
+                        producto = coca.getObject();
                     }
                 } else {
                     Moneda m100 = null;
@@ -98,10 +99,10 @@ public class Expendedor {
                             monVu.addObject(m100);
                         }
                         monedas.addObject(m);
-                        return sprite.getObject();
+                        producto = sprite.getObject();
                     } else {
                         monedas.addObject(m);
-                        return sprite.getObject();
+                        producto = sprite.getObject();
                     }
                 } else {
                     Moneda m100 = null;
@@ -127,10 +128,10 @@ public class Expendedor {
                             monVu.addObject(m100);
                         }
                         monedas.addObject(m);
-                        return fanta.getObject();
+                        producto = fanta.getObject();
                     } else {
                         monedas.addObject(m);
-                        return fanta.getObject();
+                        producto = fanta.getObject();
                     }
                 } else {
                     Moneda m100 = null;
@@ -156,10 +157,10 @@ public class Expendedor {
                             monVu.addObject(m100);
                         }
                         monedas.addObject(m);
-                        return snickers.getObject();
+                        producto = snickers.getObject();
                     } else {
                         monedas.addObject(m);
-                        return snickers.getObject();
+                        producto = snickers.getObject();
                     }
                 } else {
                     Moneda m100 = null;
@@ -185,10 +186,10 @@ public class Expendedor {
                             monVu.addObject(m100);
                         }
                         monedas.addObject(m);
-                        return super8.getObject();
+                        producto = super8.getObject();
                     } else {
                         monedas.addObject(m);
-                        return super8.getObject();
+                        producto = super8.getObject();
                     }
                 } else {
                     Moneda m100 = null;
@@ -204,6 +205,15 @@ public class Expendedor {
         }
     }
 
+    /**
+     * Devuelve el producto comprado, como si se "sacara" el producto del depósito donde cae
+     * @return producto comprado
+     */
+    public Producto getProducto() {
+        Producto aux = producto;
+        producto = null;
+        return aux;
+    }
     /**
      * Devuelve una de las monedas almacenadas en el depósito de monedas
      * @return Moneda100 del depósito
