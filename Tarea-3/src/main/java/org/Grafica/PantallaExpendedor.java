@@ -11,6 +11,7 @@ public class PantallaExpendedor extends JPanel {
     private BufferedImage imagen;
     private JButton insertarMoneda;
     private JLabel producto;
+    private int cantidad=5;
     public PantallaExpendedor(){
         super();
         setBackground(Color.BLACK);
@@ -23,6 +24,7 @@ public class PantallaExpendedor extends JPanel {
         agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Fanta.jpg")).getImage(),5,305);
         agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Snicker.png")).getImage(),5,420);
         agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Super8.jpg")).getImage(),5,535);
+
         BotonSeleccionar("0",385,156,50,72);
         BotonSeleccionar("2",385,228,50,72);
         BotonSeleccionar("4",385,300,50,72);
@@ -44,7 +46,7 @@ public class PantallaExpendedor extends JPanel {
 
     }
     public void agregarImagenProductos(Image i, int cantidad,int altura){
-        for(int j=0;j<5;j++) {
+        for(int j=0;j<cantidad;j++) {
             producto = new JLabel(new ImageIcon(i.getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
             producto.setBounds(50+(63*j), altura, 70, 100);
             add(producto);
