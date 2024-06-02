@@ -18,7 +18,11 @@ public class PantallaExpendedor extends JPanel {
             imagen = ImageIO.read(new File("src/main/java/org/Grafica/Imagenes/Expende.jpg"));
         }catch (IOException e){}
         BotonSeleccionar();
-        agregarImagenProductos();
+        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Coca.jpg")).getImage(),5,55);
+        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Sprite.jpg")).getImage(),5,180);
+        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Fanta.jpg")).getImage(),5,305);
+        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Snicker.png")).getImage(),5,420);
+        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Super8.jpg")).getImage(),5,535);
     }
     @Override
     public void paintComponent(Graphics G){
@@ -32,35 +36,11 @@ public class PantallaExpendedor extends JPanel {
         add(insertarMoneda);
 
     }
-    public void agregarImagenProductos(){
-        Image i = (new ImageIcon("src/main/java/org/Grafica/Imagenes/Coca.jpg")).getImage();
+    public void agregarImagenProductos(Image i, int cantidad,int altura){
         for(int j=0;j<5;j++) {
+            if(j>=5){break;}
             producto = new JLabel(new ImageIcon(i.getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
-            producto.setBounds(50+(63*j), 55, 70, 100);
-            add(producto);
-        }
-        i = (new ImageIcon("src/main/java/org/Grafica/Imagenes/Sprite.jpg")).getImage();
-        for(int j=0;j<5;j++) {
-            producto = new JLabel(new ImageIcon(i.getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
-            producto.setBounds(50+(63*j), 180, 70, 100);
-            add(producto);
-        }
-        i = (new ImageIcon("src/main/java/org/Grafica/Imagenes/Fanta.jpg")).getImage();
-        for(int j=0;j<5;j++) {
-            producto = new JLabel(new ImageIcon(i.getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
-            producto.setBounds(50+(63*j), 305, 70, 100);
-            add(producto);
-        }
-        i = (new ImageIcon("src/main/java/org/Grafica/Imagenes/Snicker.png")).getImage();
-        for(int j=0;j<5;j++) {
-            producto = new JLabel(new ImageIcon(i.getScaledInstance(65, 80, Image.SCALE_SMOOTH)));
-            producto.setBounds(50+(64*j), 430, 70, 100);
-            add(producto);
-        }
-        i = (new ImageIcon("src/main/java/org/Grafica/Imagenes/Super8.jpg")).getImage();
-        for(int j=0;j<5;j++) {
-            producto = new JLabel(new ImageIcon(i.getScaledInstance(70, 80, Image.SCALE_SMOOTH)));
-            producto.setBounds(50+(64*j), 530, 70, 100);
+            producto.setBounds(50+(63*j), altura, 70, 100);
             add(producto);
         }
     }
