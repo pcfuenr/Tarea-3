@@ -10,18 +10,17 @@ public class PantallaComprador extends JPanel {
         super();
         setLayout(null);
         setBackground(Color.GREEN);
-        Botones();
+        //Botones();
     }
     @Override
     public void paintComponent(Graphics G){
         super.paintComponent(G);
     }
-    public void Botones(){
+    /*public void Botones(){
         insertarMoneda=new JButton("hola mundo",new ImageIcon("src/main/java/org/Grafica/Imagenes/Coca.jpg"));
-        insertarMoneda.setBounds(0,0,500,50);
+        insertarMoneda.setBounds(0,0,200,200);
         insertarMoneda.setActionCommand("Comprar");
         insertarMoneda.addActionListener(comprador);
         add(insertarMoneda);
-    }
-
+    }*/
 }

@@ -10,21 +10,15 @@ import java.awt.*;
 public class PantallaPrincipal extends JPanel {
     private PantallaExpendedor pantallaExpendedor;
     private PantallaComprador pantallaComprador;
-    private PantallaComprador pantallaComprador2;
     private Comprador comprador;
     public PantallaPrincipal(){
         super();
         setLayout(null);
         pantallaComprador=new PantallaComprador();
         pantallaExpendedor=new PantallaExpendedor();
-        pantallaComprador2=new PantallaComprador();
-        try {
-            comprador = new Comprador(new Moneda100(), 1, new Expendedor(5));
-        }catch (Exception e){}
-        pantallaComprador.setBounds(600,100,100,100);
-        pantallaExpendedor.setBounds(50,50,500,650);
+        //pantallaComprador.setBounds(400,100,500,500);
+        pantallaExpendedor.setBounds(10,10,500,750);
         setBackground(Color.white);
-        this.add(pantallaComprador2);
         this.add(pantallaExpendedor);
         this.add(pantallaComprador);
     }
