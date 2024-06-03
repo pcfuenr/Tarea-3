@@ -10,7 +10,6 @@ public class PantallaComprador extends JPanel {
         super();
         setLayout(null);
         setBackground(Color.GREEN);
-        //Botones();
     }
     @Override
     public void paintComponent(Graphics G){
@@ -23,4 +22,5 @@ public class PantallaComprador extends JPanel {
         insertarMoneda.addActionListener(comprador);
         add(insertarMoneda);
     }*/
+
 }
