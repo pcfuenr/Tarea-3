@@ -18,7 +18,7 @@ public class PantallaPrincipal extends JPanel {
         pantallaExpendedor=new PantallaExpendedor();
         //pantallaComprador.setBounds(400,100,500,500);
         pantallaExpendedor.setBounds(0,0,500,750);
-        setBackground(Color.white);
+        setBackground(Color.darkGray);
         this.add(pantallaExpendedor);
         this.add(pantallaComprador);
     }

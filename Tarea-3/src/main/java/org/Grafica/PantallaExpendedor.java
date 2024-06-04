@@ -17,6 +17,7 @@ public class PantallaExpendedor extends JPanel {
     private BotonFanta botonFanta;
     private BotonSnicker botonSnicker;
     private BotonSuper8 botonSuper8;
+    private BotonExtra botonExtra;
     private BotonMoneda botonMoneda;
     private JLabel producto;
     private int cantidad=5;
@@ -27,8 +28,9 @@ public class PantallaExpendedor extends JPanel {
         botonFanta=new BotonFanta(this);
         botonSnicker=new BotonSnicker(this);
         botonSuper8=new BotonSuper8(this);
+        botonExtra=new BotonExtra(this);
         botonMoneda=new BotonMoneda(this);
-        setBackground(Color.BLACK);
+        setBackground(Color.black);
         try {
             imagen = ImageIO.read(new File("Tarea-3/src/main/java/org/Grafica/Imagenes/Expende.jpg"));
         }catch (IOException e){}
