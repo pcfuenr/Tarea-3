@@ -4,6 +4,8 @@ package org.Logica;
  * Expendedor al que se le puede comprar un artículo seleccionado a cambio de una moneda
  */
 public class Expendedor {
+    /** Cantidad de productos que tendrá cada depósito */
+    private int cantProductos;
     /** Deposito de productos para almacenar CocaCola */
     private Deposito<Producto> coca = new Deposito<>();
     /** Deposito de productos para almacenar Sprite */
@@ -27,7 +29,8 @@ public class Expendedor {
      * @param numProductos cantidad de productos en cada depósito
      */
     public Expendedor(int numProductos) {
-        for (int i = 0; i < numProductos; i++) {
+        cantProductos = numProductos;
+        for (int i = 0; i < cantProductos; i++) {
             Producto p = null;
             p = new CocaCola("" + Articulos.COCA.ordinal() + i);
             coca.addObject(p);
@@ -220,5 +223,38 @@ public class Expendedor {
      */
     public Moneda getVuelto() {
         return monVu.getObject();
+    }
+    public void llenarDeposito(int n) {
+        if (n == Articulos.COCA.ordinal()) {
+            for (int i = 0; i < cantProductos; i++) {
+                Producto p = null;
+                p = new CocaCola("" + Articulos.COCA.ordinal() + i);
+                coca.addObject(p);
+            }
+        } else if (n == Articulos.SPRITE.ordinal()) {
+            for (int i = 0; i < cantProductos; i++) {
+                Producto p = null;
+                p = new Sprite("" + Articulos.SPRITE.ordinal() + i);
+                sprite.addObject(p);
+            }
+        } else if (n == Articulos.FANTA.ordinal()) {
+            for (int i = 0; i < cantProductos; i++) {
+                Producto p = null;
+                p = new Fanta("" + Articulos.FANTA.ordinal() + i);
+                fanta.addObject(p);
+            }
+        } else if (n == Articulos.SNICKERS.ordinal()) {
+            for (int i = 0; i < cantProductos; i++) {
+                Producto p = null;
+                p = new Snickers("" + Articulos.SNICKERS.ordinal() + i);
+                snickers.addObject(p);
+            }
+        } else if (n == Articulos.SUPER8.ordinal()) {
+            for (int i = 0; i < cantProductos; i++) {
+                Producto p = null;
+                p = new Super8("" + Articulos.SUPER8.ordinal() + i);
+                super8.addObject(p);
+            }
+        }
     }
 }
