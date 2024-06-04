@@ -9,6 +9,7 @@ public class MiVentana extends JFrame {
 
     public MiVentana() {
         pantalla= new PantallaPrincipal();
+        this.setTitle("Expendedor");
         setSize(1000, 789);
         add(pantalla);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
