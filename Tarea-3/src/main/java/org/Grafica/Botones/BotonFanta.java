@@ -1,16 +1,8 @@
 package org.Grafica.Botones;
 import org.Grafica.PantallaExpendedor;
-import javax.swing.*;
 
-public class BotonFanta {
-    private JButton insertarMoneda;
+public class BotonFanta extends Boton {
     public BotonFanta(PantallaExpendedor p) {
-        insertarMoneda=new JButton("2");
-        insertarMoneda.setBounds(386,228,50,72);
-        p.setLayout(null);
-        p.add(insertarMoneda);
-    }
-    public JButton getInsertarMoneda() {
-        return insertarMoneda;
+        super(p, "2", 386, 228, 50, 72);
     }
 }

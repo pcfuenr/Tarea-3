@@ -46,7 +46,7 @@ public class PantallaExpendedor extends JPanel {
         super.paintComponent(G);
         G.drawImage(imagen,0,0,getWidth(),getHeight(),this);
     }
-    public void BotonSeleccionar(String numero,int x,int y,int width,int height){
+    public void botonSeleccionar(String numero,int x,int y,int width,int height){
         insertarMoneda=new JButton(numero);
         insertarMoneda.setBounds(x,y,width,height);
         setLayout(null);

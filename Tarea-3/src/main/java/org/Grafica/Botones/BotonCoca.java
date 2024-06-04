@@ -1,16 +1,8 @@
 package org.Grafica.Botones;
 import org.Grafica.PantallaExpendedor;
-import javax.swing.*;
 
-public class BotonCoca {
-    private JButton insertarMoneda;
+public class BotonCoca extends Boton {
     public BotonCoca(PantallaExpendedor p) {
-        insertarMoneda=new JButton("0");
-        insertarMoneda.setBounds(386,156,50,72);
-        p.setLayout(null);
-        p.add(insertarMoneda);
-    }
-    public JButton getInsertarMoneda() {
-        return insertarMoneda;
+        super(p, "0", 386, 156, 50, 72);
     }
 }
