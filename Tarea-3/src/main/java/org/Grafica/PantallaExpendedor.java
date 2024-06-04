@@ -30,14 +30,14 @@ public class PantallaExpendedor extends JPanel {
         botonMoneda=new BotonMoneda(this);
         setBackground(Color.BLACK);
         try {
-            imagen = ImageIO.read(new File("src/main/java/org/Grafica/Imagenes/Expende.jpg"));
+            imagen = ImageIO.read(new File("Tarea-3/src/main/java/org/Grafica/Imagenes/Expende.jpg"));
         }catch (IOException e){}
 
-        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Coca.jpg")).getImage(),cantidad,55);
-        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Sprite.jpg")).getImage(),cantidad,180);
-        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Fanta.jpg")).getImage(),cantidad,305);
-        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Snicker.png")).getImage(),cantidad,420);
-        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Super8.jpg")).getImage(),cantidad,535);
+        agregarImagenProductos((new ImageIcon("Tarea-3/src/main/java/org/Grafica/Imagenes/Coca.jpg")).getImage(),cantidad,55);
+        agregarImagenProductos((new ImageIcon("Tarea-3/src/main/java/org/Grafica/Imagenes/Sprite.jpg")).getImage(),cantidad,180);
+        agregarImagenProductos((new ImageIcon("Tarea-3/src/main/java/org/Grafica/Imagenes/Fanta.jpg")).getImage(),cantidad,305);
+        agregarImagenProductos((new ImageIcon("Tarea-3/src/main/java/org/Grafica/Imagenes/Snicker.png")).getImage(),cantidad,420);
+        agregarImagenProductos((new ImageIcon("Tarea-3/src/main/java/org/Grafica/Imagenes/Super8.jpg")).getImage(),cantidad,535);
     }
     @Override
     public void paintComponent(Graphics G){

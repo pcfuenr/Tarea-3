@@ -6,7 +6,7 @@ public class BotonFanta {
     private JButton insertarMoneda;
     public BotonFanta(PantallaExpendedor p) {
         insertarMoneda=new JButton("2");
-        insertarMoneda.setBounds(385,228,50,72);
+        insertarMoneda.setBounds(386,228,50,72);
         p.setLayout(null);
         p.add(insertarMoneda);
     }

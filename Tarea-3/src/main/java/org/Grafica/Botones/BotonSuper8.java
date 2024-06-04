@@ -8,7 +8,7 @@ public class BotonSuper8{
     private JButton insertarMoneda;
     public BotonSuper8(PantallaExpendedor p) {
         insertarMoneda=new JButton("4");
-        insertarMoneda.setBounds(385,300,50,72);
+        insertarMoneda.setBounds(386,300,50,72);
         p.setLayout(null);
         p.add(insertarMoneda);
     }
