@@ -14,12 +14,12 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class PantallaExpendedor extends JPanel implements ActionListener {
+public class PantallaExpendedor extends JPanel {
     private BufferedImage imagen;
     private Boton botonCoca;
     private Boton botonSprite;
     private Boton botonFanta;
-    private Boton botonSnicker;
+    private Boton botonSnickers;
     private Boton botonSuper8;
     private Boton botonExtra;
     private Boton botonMoneda;
@@ -28,14 +28,35 @@ public class PantallaExpendedor extends JPanel implements ActionListener {
     private Expendedor expendedor;
     public PantallaExpendedor(Expendedor exp){
         super();
-        expendedor=exp;
-        botonCoca=new BotonCoca(this);
-        botonSprite=new BotonSprite(this);
-        botonFanta=new BotonFanta(this);
-        botonSnicker=new BotonSnicker(this);
-        botonSuper8=new BotonSuper8(this);
-        botonExtra=new BotonExtra(this);
-        botonMoneda=new BotonMoneda(this);
+        expendedor = exp;
+        botonCoca = new BotonCoca(this);
+        botonSprite = new BotonSprite(this);
+        botonFanta = new BotonFanta(this);
+        botonSnickers = new BotonSnickers(this);
+        botonSuper8 = new BotonSuper8(this);
+        botonExtra = new BotonExtra(this);
+        botonMoneda = new BotonMoneda(this);
+
+        botonCoca.getBoton().addActionListener(e -> {
+            System.out.println(e.getActionCommand());
+        });
+        botonSprite.getBoton().addActionListener(e -> {
+            System.out.println(e.getActionCommand());
+        });
+        botonFanta.getBoton().addActionListener(e -> {
+            System.out.println(e.getActionCommand());
+        });
+        botonSnickers.getBoton().addActionListener(e -> {
+            System.out.println(e.getActionCommand());
+        });
+        botonSuper8.getBoton().addActionListener(e -> {
+            System.out.println(e.getActionCommand());
+        });
+        botonExtra.getBoton().addActionListener(e -> {
+            System.out.println(e.getActionCommand());
+        });
+
+
         setBackground(Color.black);
         try {
             imagen = ImageIO.read(new File("src/main/java/org/Grafica/Imagenes/Expende.jpg"));
@@ -46,8 +67,6 @@ public class PantallaExpendedor extends JPanel implements ActionListener {
         agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Fanta.jpg")).getImage(),exp.getDeposito("fanta").getTamaño(),305);
         agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Snickers.png")).getImage(),exp.getDeposito("snickers").getTamaño(),420);
         agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Super8.jpg")).getImage(),exp.getDeposito("super8").getTamaño(),535);
-
-        
     }
     @Override
     public void paintComponent(Graphics G){
@@ -60,9 +79,5 @@ public class PantallaExpendedor extends JPanel implements ActionListener {
             producto.setBounds(50+(63*j), altura, 70, 100);
             add(producto);
         }
-    }
-    public void actionPerformed(ActionEvent e) {
-        System.out.println("0");
-        System.out.println(e.getActionCommand());
     }
 }
