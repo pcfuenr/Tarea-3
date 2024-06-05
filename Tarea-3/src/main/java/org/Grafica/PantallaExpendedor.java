@@ -24,8 +24,9 @@ public class PantallaExpendedor extends JPanel {
     private Boton botonSuper8;
     private Boton botonExtra;
     private Boton botonMoneda;
+    private Boton botonVuelto;
+    private Boton botonTomarProducto;
     private JLabel producto;
-    private int cantidad=5;
     private Expendedor exp;
     public PantallaExpendedor(Expendedor expendedor){
         super();
@@ -38,8 +39,15 @@ public class PantallaExpendedor extends JPanel {
         botonSuper8 = new BotonSuper8(this);
         botonExtra = new BotonExtra(this);
         botonMoneda = new BotonMoneda(this);
+        botonVuelto = new BotonVuelto(this);
+        botonTomarProducto=new BotonTomarProducto(this);
 
-
+        botonVuelto.getBoton().addActionListener(e -> {
+            botonVuelto.botonPresionado();
+        });
+        botonTomarProducto.getBoton().addActionListener(e -> {
+            botonTomarProducto.botonPresionado();
+        });
         botonConfirmar.getBoton().addActionListener(e -> {
             botonConfirmar.botonPresionado();
         });
