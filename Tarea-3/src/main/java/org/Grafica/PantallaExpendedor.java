@@ -3,6 +3,9 @@ package org.Grafica;
 import org.Grafica.Botones.*;
 import org.Logica.CocaCola;
 import org.Logica.Expendedor;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -11,16 +14,15 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class PantallaExpendedor extends JPanel {
+public class PantallaExpendedor extends JPanel implements ActionListener {
     private BufferedImage imagen;
-    private JButton insertarMoneda;
-    private BotonCoca botonCoca;
-    private BotonSprite botonSprite;
-    private BotonFanta botonFanta;
-    private BotonSnicker botonSnicker;
-    private BotonSuper8 botonSuper8;
-    private BotonExtra botonExtra;
-    private BotonMoneda botonMoneda;
+    private Boton botonCoca;
+    private Boton botonSprite;
+    private Boton botonFanta;
+    private Boton botonSnicker;
+    private Boton botonSuper8;
+    private Boton botonExtra;
+    private Boton botonMoneda;
     private JLabel producto;
     private int cantidad=5;
     private Expendedor expendedor;
@@ -44,6 +46,8 @@ public class PantallaExpendedor extends JPanel {
         agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Fanta.jpg")).getImage(),exp.getDeposito("fanta").getTamaño(),305);
         agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Snickers.png")).getImage(),exp.getDeposito("snickers").getTamaño(),420);
         agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Super8.jpg")).getImage(),exp.getDeposito("super8").getTamaño(),535);
+
+        
     }
     @Override
     public void paintComponent(Graphics G){
@@ -56,5 +60,9 @@ public class PantallaExpendedor extends JPanel {
             producto.setBounds(50+(63*j), altura, 70, 100);
             add(producto);
         }
+    }
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("0");
+        System.out.println(e.getActionCommand());
     }
 }
