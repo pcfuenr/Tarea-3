@@ -16,6 +16,7 @@ import java.io.IOException;
 
 public class PantallaExpendedor extends JPanel {
     private BufferedImage imagen;
+    private Boton botonConfirmar;
     private Boton botonCoca;
     private Boton botonSprite;
     private Boton botonFanta;
@@ -29,6 +30,7 @@ public class PantallaExpendedor extends JPanel {
     public PantallaExpendedor(Expendedor expendedor){
         super();
         exp = expendedor;
+        botonConfirmar= new BotonConfirmar(this);
         botonCoca = new BotonCoca(this);
         botonSprite = new BotonSprite(this);
         botonFanta = new BotonFanta(this);
@@ -37,6 +39,10 @@ public class PantallaExpendedor extends JPanel {
         botonExtra = new BotonExtra(this);
         botonMoneda = new BotonMoneda(this);
 
+
+        botonConfirmar.getBoton().addActionListener(e -> {
+            botonConfirmar.botonPresionado();
+        });
         botonCoca.getBoton().addActionListener(e -> {
             botonCoca.botonPresionado();
         });
