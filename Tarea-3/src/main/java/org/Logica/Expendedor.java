@@ -1,5 +1,7 @@
 package org.Logica;
 
+import java.util.ArrayList;
+
 /**
  * Expendedor al que se le puede comprar un artículo seleccionado a cambio de una moneda
  */
@@ -256,5 +258,20 @@ public class Expendedor {
                 super8.addObject(p);
             }
         }
+    }
+    /**
+     * Funcion para obtener la cantidad de productos que quedan en cada deposito
+     * @param producto indica el deposito de productos que se quiere
+     * @return deposito de productos
+     */
+    public Deposito<Producto> getDeposito(String producto) {
+        return switch (producto) {
+            case "coca" -> coca;
+            case "sprite" -> sprite;
+            case "fanta" -> fanta;
+            case "snickers" -> snickers;
+            case "super8" -> super8;
+            default -> null;
+        };
     }
 }

@@ -1,9 +1,15 @@
 package org.Logica;
 
+import jdk.jfr.Event;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.EventListener;
+
 /**
  * Comprador que utiliza el expendedor para comprar un producto
  */
-public class Comprador {
+public class Comprador implements ActionListener {
     /** String que indica que consumió */
     private String sonido = null;
     /** Int que guarda el vuelto */
@@ -47,5 +53,12 @@ public class Comprador {
      */
     public String queConsumiste() {
         return sonido;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if("Comprar".equals(e.getActionCommand())){
+            System.out.println("Se llamo a comprar");
+        }
     }
 }
