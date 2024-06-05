@@ -5,9 +5,10 @@ import javax.swing.*;
 import java.awt.*;
 public class PantallaComprador extends JPanel {
     private JButton insertarMoneda;
-    private Comprador comprador;
-    public PantallaComprador(){
+    private Expendedor expendedor;
+    public PantallaComprador(Expendedor exp){
         super();
+        expendedor=exp;
         setLayout(null);
         setBackground(Color.GREEN);
     }

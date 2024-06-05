@@ -1,7 +1,9 @@
 package org.Grafica;
 
 import org.Grafica.Botones.*;
-
+import org.Logica.CocaCola;
+import org.Logica.Expendedor;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -21,8 +23,10 @@ public class PantallaExpendedor extends JPanel {
     private BotonMoneda botonMoneda;
     private JLabel producto;
     private int cantidad=5;
-    public PantallaExpendedor(){
+    private Expendedor expendedor;
+    public PantallaExpendedor(Expendedor exp){
         super();
+        expendedor=exp;
         botonCoca=new BotonCoca(this);
         botonSprite=new BotonSprite(this);
         botonFanta=new BotonFanta(this);
@@ -32,25 +36,19 @@ public class PantallaExpendedor extends JPanel {
         botonMoneda=new BotonMoneda(this);
         setBackground(Color.black);
         try {
-            imagen = ImageIO.read(new File("Tarea-3/src/main/java/org/Grafica/Imagenes/Expende.jpg"));
+            imagen = ImageIO.read(new File("src/main/java/org/Grafica/Imagenes/Expende.jpg"));
         }catch (IOException e){}
 
-        agregarImagenProductos((new ImageIcon("Tarea-3/src/main/java/org/Grafica/Imagenes/Coca.jpg")).getImage(),cantidad,55);
-        agregarImagenProductos((new ImageIcon("Tarea-3/src/main/java/org/Grafica/Imagenes/Sprite.jpg")).getImage(),cantidad,180);
-        agregarImagenProductos((new ImageIcon("Tarea-3/src/main/java/org/Grafica/Imagenes/Fanta.jpg")).getImage(),cantidad,305);
-        agregarImagenProductos((new ImageIcon("Tarea-3/src/main/java/org/Grafica/Imagenes/Snicker.png")).getImage(),cantidad,420);
-        agregarImagenProductos((new ImageIcon("Tarea-3/src/main/java/org/Grafica/Imagenes/Super8.jpg")).getImage(),cantidad,535);
+        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Coca.jpg")).getImage(),exp.getDeposito("coca").getTamaño(),55);
+        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Sprite.jpg")).getImage(),exp.getDeposito("sprite").getTamaño(),180);
+        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Fanta.jpg")).getImage(),exp.getDeposito("fanta").getTamaño(),305);
+        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Snicker.png")).getImage(),exp.getDeposito("snickers").getTamaño(),420);
+        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Super8.jpg")).getImage(),exp.getDeposito("super8").getTamaño(),535);
     }
     @Override
     public void paintComponent(Graphics G){
         super.paintComponent(G);
         G.drawImage(imagen,0,0,getWidth(),getHeight(),this);
-    }
-    public void botonSeleccionar(String numero,int x,int y,int width,int height){
-        insertarMoneda=new JButton(numero);
-        insertarMoneda.setBounds(x,y,width,height);
-        setLayout(null);
-        add(insertarMoneda);
     }
     public void agregarImagenProductos(Image i, int cantidad,int altura){
         for(int j=0;j<cantidad;j++) {
