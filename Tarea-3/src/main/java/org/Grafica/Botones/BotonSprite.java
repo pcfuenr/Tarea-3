@@ -5,4 +5,7 @@ public class BotonSprite extends Boton {
     public BotonSprite(PantallaExpendedor p) {
         super(p, "1", 442, 156, 50, 72);
     }
+    @Override
+    public void botonPresionado() {
+    }
 }

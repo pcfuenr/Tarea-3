@@ -13,4 +13,5 @@ public abstract class Boton {
     public JButton getBoton() {
         return boton;
     }
+    public abstract void botonPresionado();
 }

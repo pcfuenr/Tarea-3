@@ -38,24 +38,26 @@ public class PantallaExpendedor extends JPanel {
         botonMoneda = new BotonMoneda(this);
 
         botonCoca.getBoton().addActionListener(e -> {
-            System.out.println(e.getActionCommand());
+            botonCoca.botonPresionado();
         });
         botonSprite.getBoton().addActionListener(e -> {
-            System.out.println(e.getActionCommand());
+            botonSprite.botonPresionado();
         });
         botonFanta.getBoton().addActionListener(e -> {
-            System.out.println(e.getActionCommand());
+            botonFanta.botonPresionado();
         });
         botonSnickers.getBoton().addActionListener(e -> {
-            System.out.println(e.getActionCommand());
+            botonSnickers.botonPresionado();
         });
         botonSuper8.getBoton().addActionListener(e -> {
-            System.out.println(e.getActionCommand());
+            botonSuper8.botonPresionado();
         });
         botonExtra.getBoton().addActionListener(e -> {
-            System.out.println(e.getActionCommand());
+            botonExtra.botonPresionado();
         });
-
+        botonMoneda.getBoton().addActionListener(e -> {
+            botonMoneda.botonPresionado();
+        });
 
         setBackground(Color.black);
         try {
