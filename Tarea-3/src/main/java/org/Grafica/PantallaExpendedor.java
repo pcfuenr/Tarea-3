@@ -16,62 +16,11 @@ import java.io.IOException;
 
 public class PantallaExpendedor extends JPanel {
     private BufferedImage imagen;
-    private Boton botonConfirmar;
-    private Boton botonCoca;
-    private Boton botonSprite;
-    private Boton botonFanta;
-    private Boton botonSnickers;
-    private Boton botonSuper8;
-    private Boton botonExtra;
-    private Boton botonMoneda;
-    private Boton botonVuelto;
-    private Boton botonTomarProducto;
     private JLabel producto;
     private Expendedor exp;
     public PantallaExpendedor(Expendedor expendedor){
         super();
         exp = expendedor;
-        botonConfirmar= new BotonConfirmar(this);
-        botonCoca = new BotonCoca(this);
-        botonSprite = new BotonSprite(this);
-        botonFanta = new BotonFanta(this);
-        botonSnickers = new BotonSnickers(this);
-        botonSuper8 = new BotonSuper8(this);
-        botonExtra = new BotonExtra(this);
-        botonMoneda = new BotonMoneda(this);
-        botonVuelto = new BotonVuelto(this);
-        botonTomarProducto=new BotonTomarProducto(this);
-
-        botonVuelto.getBoton().addActionListener(e -> {
-            botonVuelto.botonPresionado();
-        });
-        botonTomarProducto.getBoton().addActionListener(e -> {
-            botonTomarProducto.botonPresionado();
-        });
-        botonConfirmar.getBoton().addActionListener(e -> {
-            botonConfirmar.botonPresionado();
-        });
-        botonCoca.getBoton().addActionListener(e -> {
-            botonCoca.botonPresionado();
-        });
-        botonSprite.getBoton().addActionListener(e -> {
-            botonSprite.botonPresionado();
-        });
-        botonFanta.getBoton().addActionListener(e -> {
-            botonFanta.botonPresionado();
-        });
-        botonSnickers.getBoton().addActionListener(e -> {
-            botonSnickers.botonPresionado();
-        });
-        botonSuper8.getBoton().addActionListener(e -> {
-            botonSuper8.botonPresionado();
-        });
-        botonExtra.getBoton().addActionListener(e -> {
-            botonExtra.botonPresionado();
-        });
-        botonMoneda.getBoton().addActionListener(e -> {
-            botonMoneda.botonPresionado();
-        });
 
         setBackground(Color.black);
         try {
