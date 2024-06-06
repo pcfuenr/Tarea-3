@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PantallaComprador extends JPanel {
+    private JLabel moneda;
     private Boton botonConfirmar;
     private Boton botonCoca;
     private Boton botonSprite;
@@ -27,20 +28,30 @@ public class PantallaComprador extends JPanel {
 
         moneda100 = new JRadioButton("$100");
         moneda100.setBackground(Color.gray);
-        moneda100.setBounds(5, 55, 60, 25);
+        moneda100.setBounds(5, 45, 60, 25);
         this.add(moneda100);
         moneda500 = new JRadioButton("$500");
         moneda500.setBackground(Color.gray);
-        moneda500.setBounds(5, 155, 60, 25);
+        moneda500.setBounds(5, 145, 60, 25);
         this.add(moneda500);
         moneda1000 = new JRadioButton("$1000");
         moneda1000.setBackground(Color.gray);
-        moneda1000.setBounds(5, 255, 60, 25);
+        moneda1000.setBounds(5, 245, 60, 25);
         this.add(moneda1000);
         ButtonGroup monedas = new ButtonGroup();
         monedas.add(moneda100);
         monedas.add(moneda500);
         monedas.add(moneda1000);
+
+        moneda = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/100.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH)));
+        moneda.setBounds(70, 5, 100, 100);
+        this.add(moneda);
+        moneda = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/500.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH)));
+        moneda.setBounds(70, 105, 100, 100);
+        this.add(moneda);
+        moneda = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/1000.jpg").getImage().getScaledInstance(206, 100, Image.SCALE_SMOOTH)));
+        moneda.setBounds(75, 205, 206, 100);
+        this.add(moneda);
 
         botonConfirmar= new BotonConfirmar(p);
         botonCoca = new BotonCoca(p);
@@ -84,7 +95,7 @@ public class PantallaComprador extends JPanel {
             botonMoneda.botonPresionado();
         });
 
-        setBackground(Color.black);
+        setBackground(Color.gray);
     }
     @Override
     public void paintComponent(Graphics G){
