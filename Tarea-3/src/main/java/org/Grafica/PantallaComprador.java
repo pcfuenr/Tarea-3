@@ -23,6 +23,8 @@ public class PantallaComprador extends JPanel {
     private JRadioButton moneda500;
     private JRadioButton moneda1000;
     private Expendedor exp;
+    private Moneda coin;
+    private int select;
     public PantallaComprador(Expendedor exp, PantallaExpendedor p){
         super();
         this.exp = exp;
@@ -46,51 +48,67 @@ public class PantallaComprador extends JPanel {
         monedas.add(moneda1000);
 
         moneda100.addActionListener(e -> {
-            System.out.println(e.getActionCommand());
+            coin = new Moneda100();
+            System.out.println(coin.getSerie());
         });
         moneda500.addActionListener(e -> {
-            System.out.println(e.getActionCommand());
+            coin = new Moneda500();
+            System.out.println(coin.getSerie());
         });
         moneda1000.addActionListener(e -> {
-            System.out.println(e.getActionCommand());
+            coin = new Moneda1000();
+            System.out.println(coin.getSerie());
         });
 
-        botonConfirmar= new BotonConfirmar(p);
         botonCoca = new BotonCoca(p);
         botonSprite = new BotonSprite(p);
         botonFanta = new BotonFanta(p);
         botonSnickers = new BotonSnickers(p);
         botonSuper8 = new BotonSuper8(p);
         botonExtra = new BotonExtra(p);
+        botonConfirmar= new BotonConfirmar(p);
         botonMoneda = new BotonMoneda(p);
         botonVuelto = new BotonVuelto(p);
         botonTomarProducto=new BotonTomarProducto(p);
+
+        botonCoca.getBoton().addActionListener(e -> {
+            select = Articulos.COCA.ordinal();
+            System.out.println(select);
+        });
+        botonSprite.getBoton().addActionListener(e -> {
+            select = Articulos.SPRITE.ordinal();
+            System.out.println(select);
+        });
+        botonFanta.getBoton().addActionListener(e -> {
+            select = Articulos.FANTA.ordinal();
+            System.out.println(select);
+        });
+        botonSnickers.getBoton().addActionListener(e -> {
+            select = Articulos.SNICKERS.ordinal();
+            System.out.println(select);
+        });
+        botonSuper8.getBoton().addActionListener(e -> {
+            select = Articulos.SUPER8.ordinal();
+            System.out.println(select);
+        });
+        botonExtra.getBoton().addActionListener(e -> {
+            select = 5;
+            System.out.println(select);
+        });
+
+        botonConfirmar.getBoton().addActionListener(e -> {
+            try {
+                exp.comprarProducto(coin, select);
+            } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayProductoException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage(),"Error de compra" , JOptionPane.ERROR_MESSAGE);
+            }
+            System.out.println(e.getActionCommand());
+        });
 
         botonVuelto.getBoton().addActionListener(e -> {
             System.out.println(e.getActionCommand());
         });
         botonTomarProducto.getBoton().addActionListener(e -> {
-            System.out.println(e.getActionCommand());
-        });
-        botonConfirmar.getBoton().addActionListener(e -> {
-            System.out.println(e.getActionCommand());
-        });
-        botonCoca.getBoton().addActionListener(e -> {
-            System.out.println(e.getActionCommand());
-        });
-        botonSprite.getBoton().addActionListener(e -> {
-            System.out.println(e.getActionCommand());
-        });
-        botonFanta.getBoton().addActionListener(e -> {
-            System.out.println(e.getActionCommand());
-        });
-        botonSnickers.getBoton().addActionListener(e -> {
-            System.out.println(e.getActionCommand());
-        });
-        botonSuper8.getBoton().addActionListener(e -> {
-            System.out.println(e.getActionCommand());
-        });
-        botonExtra.getBoton().addActionListener(e -> {
             System.out.println(e.getActionCommand());
         });
         botonMoneda.getBoton().addActionListener(e -> {
