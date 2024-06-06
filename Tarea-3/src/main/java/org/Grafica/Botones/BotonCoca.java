@@ -7,5 +7,6 @@ public class BotonCoca extends Boton {
     }
     @Override
     public void botonPresionado() {
+        pantallaExpendedor.setNumSeleccionado(0);
     }
 }

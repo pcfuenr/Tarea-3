@@ -7,5 +7,6 @@ public class BotonSnickers extends Boton {
     }
     @Override
     public void botonPresionado() {
+        pantallaExpendedor.setNumSeleccionado(3);
     }
 }

@@ -7,5 +7,6 @@ public class BotonSprite extends Boton {
     }
     @Override
     public void botonPresionado() {
+        pantallaExpendedor.setNumSeleccionado(1);
     }
 }

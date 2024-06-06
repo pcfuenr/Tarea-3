@@ -18,6 +18,7 @@ public class PantallaExpendedor extends JPanel {
     private BufferedImage imagen;
     private JLabel producto;
     private Expendedor exp;
+    private int NumSeleccionado;
     public PantallaExpendedor(Expendedor expendedor){
         super();
         exp = expendedor;
@@ -43,5 +44,11 @@ public class PantallaExpendedor extends JPanel {
             producto.setBounds(50+(63*j), altura, 70, 100);
             add(producto);
         }
+    }
+    public void setNumSeleccionado(int x){
+        NumSeleccionado=x;
+    }
+    public int getNumSeleccionado(){
+        return NumSeleccionado;
     }
 }

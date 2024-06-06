@@ -7,5 +7,6 @@ public class BotonFanta extends Boton {
     }
     @Override
     public void botonPresionado() {
+        pantallaExpendedor.setNumSeleccionado(2);
     }
 }

@@ -7,5 +7,6 @@ public class BotonSuper8 extends Boton {
     }
     @Override
     public void botonPresionado() {
+        pantallaExpendedor.setNumSeleccionado(4);
     }
 }

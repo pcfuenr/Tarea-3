@@ -7,5 +7,7 @@ public class BotonConfirmar extends Boton {
     }
     @Override
     public void botonPresionado() {
+
+        pantallaExpendedor.repaint();
     }
 }
