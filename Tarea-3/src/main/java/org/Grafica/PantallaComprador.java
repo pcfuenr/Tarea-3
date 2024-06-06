@@ -23,6 +23,7 @@ public class PantallaComprador extends JPanel {
     private JRadioButton moneda500;
     private JRadioButton moneda1000;
     private Expendedor exp;
+    private Deposito<Producto> bolsillo = new Deposito<>();
     private Moneda coin;
     private int select;
     public PantallaComprador(Expendedor exp, PantallaExpendedor p){
@@ -50,15 +51,12 @@ public class PantallaComprador extends JPanel {
 
         moneda100.addActionListener(e -> {
             coin = new Moneda100();
-            System.out.println(coin.getSerie());
         });
         moneda500.addActionListener(e -> {
             coin = new Moneda500();
-            System.out.println(coin.getSerie());
         });
         moneda1000.addActionListener(e -> {
             coin = new Moneda1000();
-            System.out.println(coin.getSerie());
         });
 
         botonCoca = new BotonCoca(p);
@@ -73,27 +71,21 @@ public class PantallaComprador extends JPanel {
 
         botonCoca.getBoton().addActionListener(e -> {
             select = Articulos.COCA.ordinal();
-            System.out.println(select);
         });
         botonSprite.getBoton().addActionListener(e -> {
             select = Articulos.SPRITE.ordinal();
-            System.out.println(select);
         });
         botonFanta.getBoton().addActionListener(e -> {
             select = Articulos.FANTA.ordinal();
-            System.out.println(select);
         });
         botonSnickers.getBoton().addActionListener(e -> {
             select = Articulos.SNICKERS.ordinal();
-            System.out.println(select);
         });
         botonSuper8.getBoton().addActionListener(e -> {
             select = Articulos.SUPER8.ordinal();
-            System.out.println(select);
         });
         botonExtra.getBoton().addActionListener(e -> {
             select = 5;
-            System.out.println(select);
         });
 
         botonConfirmar.getBoton().addActionListener(e -> {
@@ -104,20 +96,22 @@ public class PantallaComprador extends JPanel {
             }
             panelExp.productoSeleccionado = select;
             panelExp.repaint();
-            System.out.println(e.getActionCommand());
         });
 
         botonVuelto.getBoton().addActionListener(e -> {
             Moneda m;
             do {
                 m = exp.getVuelto();
-                System.out.println(m);
             } while (m != null);
             panelExp.repaint();
-            System.out.println(e.getActionCommand());
         });
         botonTomarProducto.getBoton().addActionListener(e -> {
-            System.out.println(e.getActionCommand());
+            if (exp.checkProducto()) {
+                bolsillo.addObject(exp.getProducto());
+                panelExp.repaint();
+            } else {
+                panelExp.repaint();
+            }
         });
 
         setBackground(Color.gray);
