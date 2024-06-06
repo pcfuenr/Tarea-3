@@ -11,8 +11,13 @@ import java.awt.event.ActionListener;
  * Panel que representa al comprador
  */
 public class PantallaComprador extends JPanel {
+    /** Referencia al panel expendedor */
     private PantallaExpendedor panelExp;
+    /** representacion grafica de la moneda para seleccionar */
     private JLabel moneda;
+    /** Representacion del producto recibido */
+    private JLabel producto;
+    /** Todos los botones necesarios para que funcione correctamente el programa*/
     private Boton botonConfirmar;
     private Boton botonCoca;
     private Boton botonSprite;
@@ -22,19 +27,29 @@ public class PantallaComprador extends JPanel {
     private Boton botonExtra;
     private Boton botonVuelto;
     private Boton botonTomarProducto;
+    /** Botones para seleccionar una moneda para pagar */
     private JRadioButton moneda100;
     private JRadioButton moneda500;
     private JRadioButton moneda1000;
+    /** Referencia al expendedor */
     private Expendedor exp;
+    /** Deposito de productos del comprador */
     private Deposito<Producto> bolsillo = new Deposito<>();
+    /** Moneda usada para pagar */
     private Moneda coin;
+    /** Para seleccionar producto */
     private int select;
+
+    /**
+     * Metodo constructor que crea los botones y los listeners
+     * @param exp Expendedor
+     * @param p pantalla expendedor
+     */
     public PantallaComprador(Expendedor exp, PantallaExpendedor p){
         super();
         this.panelExp = p;
         this.exp = exp;
         this.setLayout(null);
-
         moneda100 = new JRadioButton("100");
         moneda100.setBackground(Color.gray);
         moneda100.setBounds(5, 45, 60, 25);
@@ -90,7 +105,9 @@ public class PantallaComprador extends JPanel {
         botonExtra.getBoton().addActionListener(e -> {
             select = 5;
         });
-
+        /**
+         * Listener que incializa una compra
+         */
         botonConfirmar.getBoton().addActionListener(e -> {
             try {
                 exp.comprarProducto(coin, select);
@@ -101,6 +118,9 @@ public class PantallaComprador extends JPanel {
             panelExp.repaint();
         });
 
+        /**
+         * Recibe el vuelto
+         */
         botonVuelto.getBoton().addActionListener(e -> {
             Moneda m;
             do {
@@ -108,6 +128,9 @@ public class PantallaComprador extends JPanel {
             } while (m != null);
             panelExp.repaint();
         });
+        /**
+         * Agarra el producto comprado
+         */
         botonTomarProducto.getBoton().addActionListener(e -> {
             if (exp.checkProducto()) {
                 bolsillo.addObject(exp.getProducto());
@@ -119,6 +142,11 @@ public class PantallaComprador extends JPanel {
 
         setBackground(Color.gray);
     }
+
+    /**
+     * Implementacion de paintcomponent necesaria para seleccionar la moneda a usar a nivel visual
+     * @param G objeto basico para renderizar la grafica
+     */
     @Override
     public void paintComponent(Graphics G){
         super.paintComponent(G);

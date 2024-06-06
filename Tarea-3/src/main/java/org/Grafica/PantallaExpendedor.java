@@ -15,12 +15,24 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Clase que representa el expendedor
+ */
 public class PantallaExpendedor extends JPanel {
+    /** Para subir imagenes*/
     private BufferedImage imagen;
+    /** Labels para subir y quitar imagenes */
     private JLabel producto;
     private JLabel productoSacar = null;
+    /** Referencia expendedor */
     private Expendedor exp;
+    /** producto seleccionado por defecto -1*/
     public int productoSeleccionado = -1;
+
+    /**
+     * Constructor que crea la pantalla expendedor y sube la foto del expendedor.
+     * @param expendedor referencia a un expendedor logico
+     */
     public PantallaExpendedor(Expendedor expendedor){
         super();
         exp = expendedor;
@@ -30,6 +42,12 @@ public class PantallaExpendedor extends JPanel {
             imagen = ImageIO.read(new File("src/main/java/org/Grafica/Imagenes/Expende.jpg"));
         }catch (IOException e){}
     }
+
+    /**
+     * Metodo que sube fotos de los productos que quedan en la maquina,
+     * Y sirve para manejar las interacciones de getvuelto, o getproducto a nivel grafico
+     * @param G
+     */
     @Override
     public void paintComponent(Graphics G){
         super.paintComponent(G);
@@ -86,6 +104,13 @@ public class PantallaExpendedor extends JPanel {
             add(productoSacar);
         }
     }
+
+    /**
+     * Sirve para agregar los productos en el expendedor (de manera visual)
+     * @param i imagen a agregar
+     * @param cantidad cuantos agregaras
+     * @param altura coordenada y de la pantalla expendedor
+     */
     public void agregarImagenProductos(Image i, int cantidad,int altura){
         for(int j=0;j<cantidad;j++) {
             producto = new JLabel(new ImageIcon(i.getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
