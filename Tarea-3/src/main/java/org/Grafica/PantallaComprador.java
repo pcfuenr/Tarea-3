@@ -16,10 +16,32 @@ public class PantallaComprador extends JPanel {
     private Boton botonMoneda;
     private Boton botonVuelto;
     private Boton botonTomarProducto;
+    private JRadioButton moneda100;
+    private JRadioButton moneda500;
+    private JRadioButton moneda1000;
     private Expendedor exp;
     public PantallaComprador(Expendedor exp, PantallaExpendedor p){
         super();
         this.exp = exp;
+        this.setLayout(null);
+
+        moneda100 = new JRadioButton("$100");
+        moneda100.setBackground(Color.gray);
+        moneda100.setBounds(5, 55, 60, 25);
+        this.add(moneda100);
+        moneda500 = new JRadioButton("$500");
+        moneda500.setBackground(Color.gray);
+        moneda500.setBounds(5, 155, 60, 25);
+        this.add(moneda500);
+        moneda1000 = new JRadioButton("$1000");
+        moneda1000.setBackground(Color.gray);
+        moneda1000.setBounds(5, 255, 60, 25);
+        this.add(moneda1000);
+        ButtonGroup monedas = new ButtonGroup();
+        monedas.add(moneda100);
+        monedas.add(moneda500);
+        monedas.add(moneda1000);
+
         botonConfirmar= new BotonConfirmar(p);
         botonCoca = new BotonCoca(p);
         botonSprite = new BotonSprite(p);
