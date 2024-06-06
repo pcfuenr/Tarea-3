@@ -4,10 +4,14 @@ package org.Logica;
  * Superclase Moneda para todas las monedas, ademas implementa la interfaz comparable.
  */
 public abstract class Moneda implements Comparable<Moneda> {
+    /** Número que diferenciará la serie de cada moneda */
+    public static int numSerie = 0;
     /** Número de serie */
     protected String serie;
     /** Constructor */
     public Moneda() {
+        this.serie = "" + Moneda.numSerie;
+        Moneda.numSerie++;
     }
     /** Metodo abstracto que devuelve el valor de la moneda*/
     public abstract int getValor();

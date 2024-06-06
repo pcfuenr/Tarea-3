@@ -6,7 +6,7 @@ public class Moneda500 extends Moneda {
     /** Constructor que por defecto solo inicializa*/
     public Moneda500() {
         super();
-        this.serie = "$500";
+        this.serie = serie + "500";
     }
 
     /**
