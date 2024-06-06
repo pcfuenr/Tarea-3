@@ -216,6 +216,13 @@ public class Expendedor {
     }
 
     /**
+     * Revisa si hay producto que tomar
+     * @return valor de verdad
+     */
+    public boolean checkProducto() {
+        return producto != null;
+    }
+    /**
      * Devuelve el producto comprado, como si se "sacara" el producto del depósito donde cae
      * @return producto comprado
      */

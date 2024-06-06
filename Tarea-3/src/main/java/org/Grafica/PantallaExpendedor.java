@@ -1,6 +1,7 @@
 package org.Grafica;
 
 import org.Grafica.Botones.*;
+import org.Logica.Articulos;
 import org.Logica.CocaCola;
 import org.Logica.Expendedor;
 
@@ -18,6 +19,7 @@ public class PantallaExpendedor extends JPanel {
     private BufferedImage imagen;
     private JLabel producto;
     private Expendedor exp;
+    public int productoSeleccionado = -1;
     public PantallaExpendedor(Expendedor expendedor){
         super();
         exp = expendedor;
@@ -44,9 +46,35 @@ public class PantallaExpendedor extends JPanel {
             G.setColor(Color.white);
             G.fillRect(412, 489, 50, 10);
         }
-        /*if (exp.) {
-            producto = new JLabel(new ImageIcon)
-        }*/
+        if (exp.checkProducto()) {
+            if (productoSeleccionado == Articulos.COCA.ordinal()) {
+                producto = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/Coca.jpg").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
+                producto.setBounds(412, 550, 50, 80);
+                add(producto);
+            } else if (productoSeleccionado == Articulos.SPRITE.ordinal()) {
+                producto = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/Sprite.jpg").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
+                producto.setBounds(412, 550, 50, 80);
+                add(producto);
+            } else if (productoSeleccionado == Articulos.FANTA.ordinal()) {
+                producto = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/Fanta.jpg").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
+                producto.setBounds(412, 550, 50, 80);
+                add(producto);
+            } else if (productoSeleccionado == Articulos.SNICKERS.ordinal()) {
+                producto = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/Snickers.jpg").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
+                producto.setBounds(412, 550, 50, 80);
+                add(producto);
+            } else  if (productoSeleccionado == Articulos.SUPER8.ordinal()) {
+                producto = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/Super8.jpg").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
+                producto.setBounds(412, 550, 50, 80);
+                add(producto);
+            } else {
+                G.setColor(Color.white);
+                G.fillRect(406, 528, 62, 106);
+            }
+        } else {
+            G.setColor(Color.white);
+            G.fillRect(406, 528, 62, 106);
+        }
     }
     public void agregarImagenProductos(Image i, int cantidad,int altura){
         for(int j=0;j<cantidad;j++) {
