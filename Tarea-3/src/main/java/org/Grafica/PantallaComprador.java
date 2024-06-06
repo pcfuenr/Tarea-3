@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PantallaComprador extends JPanel {
+    private PantallaExpendedor panelExp;
     private JLabel moneda;
     private Boton botonConfirmar;
     private Boton botonCoca;
@@ -26,6 +27,7 @@ public class PantallaComprador extends JPanel {
     private int select;
     public PantallaComprador(Expendedor exp, PantallaExpendedor p){
         super();
+        this.panelExp = p;
         this.exp = exp;
         this.setLayout(null);
 
@@ -100,6 +102,13 @@ public class PantallaComprador extends JPanel {
             } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayProductoException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage(),"Error de compra" , JOptionPane.ERROR_MESSAGE);
             }
+            if (exp.checkVuelto()) {
+                panelExp.hayVuelto = true;
+                panelExp.repaint();
+            } else {
+                panelExp.hayVuelto = false;
+                panelExp.repaint();
+            }
             System.out.println(e.getActionCommand());
         });
 
@@ -109,6 +118,8 @@ public class PantallaComprador extends JPanel {
                 m = exp.getVuelto();
                 System.out.println(m);
             } while (m != null);
+            panelExp.hayVuelto = false;
+            panelExp.repaint();
             System.out.println(e.getActionCommand());
         });
         botonTomarProducto.getBoton().addActionListener(e -> {

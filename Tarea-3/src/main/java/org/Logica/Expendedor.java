@@ -224,6 +224,14 @@ public class Expendedor {
         producto = null;
         return aux;
     }
+
+    /**
+     * Revisa si hay vuelto que tomar
+     * @return valor de verdad
+     */
+    public boolean checkVuelto() {
+        return monVu.checkObject();
+    }
     /**
      * Devuelve una de las monedas almacenadas en el depósito de monedas
      * @return Moneda100 del depósito
@@ -231,6 +239,11 @@ public class Expendedor {
     public Moneda getVuelto() {
         return monVu.getObject();
     }
+
+    /**
+     * Llena el depósito especificado
+     * @param n depósito que se quiere llenar
+     */
     public void llenarDeposito(int n) {
         if (n == Articulos.COCA.ordinal()) {
             for (int i = 0; i < cantProductos; i++) {
