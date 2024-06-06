@@ -18,7 +18,6 @@ public class PantallaExpendedor extends JPanel {
     private BufferedImage imagen;
     private JLabel producto;
     private Expendedor exp;
-    public boolean hayVuelto = false;
     public PantallaExpendedor(Expendedor expendedor){
         super();
         exp = expendedor;
@@ -38,13 +37,16 @@ public class PantallaExpendedor extends JPanel {
         agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Snickers.png")).getImage(),exp.getDeposito("snickers").getTamaño(),420);
         agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Super8.jpg")).getImage(),exp.getDeposito("super8").getTamaño(),535);
 
-        if (hayVuelto) {
+        if (exp.checkVuelto()) {
             G.setColor(Color.ORANGE);
             G.fillRect(412, 489, 50, 10);
         } else {
             G.setColor(Color.white);
             G.fillRect(412, 489, 50, 10);
         }
+        /*if (exp.) {
+            producto = new JLabel(new ImageIcon)
+        }*/
     }
     public void agregarImagenProductos(Image i, int cantidad,int altura){
         for(int j=0;j<cantidad;j++) {

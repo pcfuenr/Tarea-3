@@ -102,13 +102,7 @@ public class PantallaComprador extends JPanel {
             } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayProductoException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage(),"Error de compra" , JOptionPane.ERROR_MESSAGE);
             }
-            if (exp.checkVuelto()) {
-                panelExp.hayVuelto = true;
-                panelExp.repaint();
-            } else {
-                panelExp.hayVuelto = false;
-                panelExp.repaint();
-            }
+            panelExp.repaint();
             System.out.println(e.getActionCommand());
         });
 
@@ -118,7 +112,6 @@ public class PantallaComprador extends JPanel {
                 m = exp.getVuelto();
                 System.out.println(m);
             } while (m != null);
-            panelExp.hayVuelto = false;
             panelExp.repaint();
             System.out.println(e.getActionCommand());
         });
