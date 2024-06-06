@@ -106,6 +106,11 @@ public class PantallaComprador extends JPanel {
         });
 
         botonVuelto.getBoton().addActionListener(e -> {
+            Moneda m;
+            do {
+                m = exp.getVuelto();
+                System.out.println(m);
+            } while (m != null);
             System.out.println(e.getActionCommand());
         });
         botonTomarProducto.getBoton().addActionListener(e -> {
