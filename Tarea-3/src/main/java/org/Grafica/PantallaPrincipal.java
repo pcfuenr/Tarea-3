@@ -7,10 +7,21 @@ import org.Logica.Moneda100;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Panel principal que maneja las otras dos pantallas
+ */
 public class PantallaPrincipal extends JPanel {
+    /** Panel del expendedor */
     private PantallaExpendedor pantallaExpendedor;
+    /** Panel del comprador */
     private PantallaComprador pantallaComprador;
+    /** Expendedor de la lógica */
     private Expendedor exp;
+
+    /**
+     * Constructor del panel
+     * Crea instancias de los otros dos paneles y los acomoda
+     */
     public PantallaPrincipal(){
         super();
         setLayout(null);
@@ -24,6 +35,10 @@ public class PantallaPrincipal extends JPanel {
         this.add(pantallaComprador);
     }
 
+    /**
+     * Implementación necesaria de paintComponent para que se dibuje el panel en la ventana
+     * @param G gráficos para dibujar
+     */
     @Override
     public void paintComponent(Graphics G){
         super.paintComponent(G);;

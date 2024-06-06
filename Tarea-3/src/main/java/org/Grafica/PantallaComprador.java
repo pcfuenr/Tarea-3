@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Panel que representa al comprador
+ */
 public class PantallaComprador extends JPanel {
     private PantallaExpendedor panelExp;
     private JLabel moneda;
