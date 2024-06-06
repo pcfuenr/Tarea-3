@@ -16,7 +16,6 @@ public class PantallaComprador extends JPanel {
     private Boton botonSnickers;
     private Boton botonSuper8;
     private Boton botonExtra;
-    private Boton botonMoneda;
     private Boton botonVuelto;
     private Boton botonTomarProducto;
     private JRadioButton moneda100;
@@ -67,7 +66,6 @@ public class PantallaComprador extends JPanel {
         botonSuper8 = new BotonSuper8(p);
         botonExtra = new BotonExtra(p);
         botonConfirmar= new BotonConfirmar(p);
-        botonMoneda = new BotonMoneda(p);
         botonVuelto = new BotonVuelto(p);
         botonTomarProducto=new BotonTomarProducto(p);
 
@@ -114,9 +112,6 @@ public class PantallaComprador extends JPanel {
             System.out.println(e.getActionCommand());
         });
         botonTomarProducto.getBoton().addActionListener(e -> {
-            System.out.println(e.getActionCommand());
-        });
-        botonMoneda.getBoton().addActionListener(e -> {
             System.out.println(e.getActionCommand());
         });
 

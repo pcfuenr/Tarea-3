@@ -7,6 +7,6 @@ public class BotonVuelto extends Boton {
      * @param p panel respecto al cual se pondrán los botones
      */
     public BotonVuelto(PantallaExpendedor p){
-        super(p,"Vuelto",398, 461, 79, 39);
+        super(p,"Vuelto",382, 407, 111, 33);
     }
 }
