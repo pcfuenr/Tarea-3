@@ -4,6 +4,8 @@ import org.Grafica.Botones.*;
 import org.Logica.*;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PantallaComprador extends JPanel {
     private JLabel moneda;
@@ -26,15 +28,15 @@ public class PantallaComprador extends JPanel {
         this.exp = exp;
         this.setLayout(null);
 
-        moneda100 = new JRadioButton("$100");
+        moneda100 = new JRadioButton("100");
         moneda100.setBackground(Color.gray);
         moneda100.setBounds(5, 45, 60, 25);
         this.add(moneda100);
-        moneda500 = new JRadioButton("$500");
+        moneda500 = new JRadioButton("500");
         moneda500.setBackground(Color.gray);
         moneda500.setBounds(5, 145, 60, 25);
         this.add(moneda500);
-        moneda1000 = new JRadioButton("$1000");
+        moneda1000 = new JRadioButton("1000");
         moneda1000.setBackground(Color.gray);
         moneda1000.setBounds(5, 245, 60, 25);
         this.add(moneda1000);
@@ -43,15 +45,15 @@ public class PantallaComprador extends JPanel {
         monedas.add(moneda500);
         monedas.add(moneda1000);
 
-        moneda = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/100.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH)));
-        moneda.setBounds(70, 5, 100, 100);
-        this.add(moneda);
-        moneda = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/500.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH)));
-        moneda.setBounds(70, 105, 100, 100);
-        this.add(moneda);
-        moneda = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/1000.jpg").getImage().getScaledInstance(206, 100, Image.SCALE_SMOOTH)));
-        moneda.setBounds(75, 205, 206, 100);
-        this.add(moneda);
+        moneda100.addActionListener(e -> {
+            System.out.println(e.getActionCommand());
+        });
+        moneda500.addActionListener(e -> {
+            System.out.println(e.getActionCommand());
+        });
+        moneda1000.addActionListener(e -> {
+            System.out.println(e.getActionCommand());
+        });
 
         botonConfirmar= new BotonConfirmar(p);
         botonCoca = new BotonCoca(p);
@@ -65,34 +67,34 @@ public class PantallaComprador extends JPanel {
         botonTomarProducto=new BotonTomarProducto(p);
 
         botonVuelto.getBoton().addActionListener(e -> {
-            botonVuelto.botonPresionado();
+            System.out.println(e.getActionCommand());
         });
         botonTomarProducto.getBoton().addActionListener(e -> {
-            botonTomarProducto.botonPresionado();
+            System.out.println(e.getActionCommand());
         });
         botonConfirmar.getBoton().addActionListener(e -> {
-            botonConfirmar.botonPresionado();
+            System.out.println(e.getActionCommand());
         });
         botonCoca.getBoton().addActionListener(e -> {
-            botonCoca.botonPresionado();
+            System.out.println(e.getActionCommand());
         });
         botonSprite.getBoton().addActionListener(e -> {
-            botonSprite.botonPresionado();
+            System.out.println(e.getActionCommand());
         });
         botonFanta.getBoton().addActionListener(e -> {
-            botonFanta.botonPresionado();
+            System.out.println(e.getActionCommand());
         });
         botonSnickers.getBoton().addActionListener(e -> {
-            botonSnickers.botonPresionado();
+            System.out.println(e.getActionCommand());
         });
         botonSuper8.getBoton().addActionListener(e -> {
-            botonSuper8.botonPresionado();
+            System.out.println(e.getActionCommand());
         });
         botonExtra.getBoton().addActionListener(e -> {
-            botonExtra.botonPresionado();
+            System.out.println(e.getActionCommand());
         });
         botonMoneda.getBoton().addActionListener(e -> {
-            botonMoneda.botonPresionado();
+            System.out.println(e.getActionCommand());
         });
 
         setBackground(Color.gray);
@@ -100,5 +102,14 @@ public class PantallaComprador extends JPanel {
     @Override
     public void paintComponent(Graphics G){
         super.paintComponent(G);
+        moneda = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/100.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH)));
+        moneda.setBounds(70, 5, 100, 100);
+        this.add(moneda);
+        moneda = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/500.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH)));
+        moneda.setBounds(70, 105, 100, 100);
+        this.add(moneda);
+        moneda = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/1000.jpg").getImage().getScaledInstance(206, 100, Image.SCALE_SMOOTH)));
+        moneda.setBounds(75, 205, 206, 100);
+        this.add(moneda);
     }
 }
