@@ -23,6 +23,7 @@ public class PantallaComprador extends JPanel {
     private JRadioButton moneda500;
     private JRadioButton moneda1000;
     private Expendedor exp;
+    private Moneda monedaPagar;
     public PantallaComprador(Expendedor exp, PantallaExpendedor p){
         super();
         this.exp = exp;
@@ -47,12 +48,15 @@ public class PantallaComprador extends JPanel {
 
         moneda100.addActionListener(e -> {
             System.out.println(e.getActionCommand());
+            monedaPagar=new Moneda100();
         });
         moneda500.addActionListener(e -> {
             System.out.println(e.getActionCommand());
+            monedaPagar=new Moneda500();
         });
         moneda1000.addActionListener(e -> {
             System.out.println(e.getActionCommand());
+            monedaPagar=new Moneda1000();
         });
 
         botonConfirmar= new BotonConfirmar(p);
