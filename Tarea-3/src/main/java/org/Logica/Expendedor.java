@@ -205,6 +205,11 @@ public class Expendedor {
                     throw new NoHayProductoException("Error, no quedan Super8 en el depósito");
                 }
             } else {
+                Moneda m100 = null;
+                for (int i = 0; i < (m.getValor() / 100); i++) {
+                    m100 = new Moneda100();
+                    monVu.addObject(m100);
+                }
                 throw new NoHayProductoException("Error, no hay producto que corresponda al número seleccionado");
             }
         }
