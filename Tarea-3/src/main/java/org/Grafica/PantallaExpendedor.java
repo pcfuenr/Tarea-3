@@ -14,12 +14,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Clase que representa el expendedor
+ * Panel que representa el expendedor
  */
 public class PantallaExpendedor extends JPanel {
     /** Para subir imagenes*/
     private BufferedImage imagen;
-    /** Labels para subir y quitar imagenes */
+    /** Arreglos de labels para subir y quitar imagenes */
     private ArrayList<JLabel> coca = new ArrayList<>();
     private ArrayList<JLabel> sprite = new ArrayList<>();
     private ArrayList<JLabel> fanta = new ArrayList<>();
@@ -71,7 +71,7 @@ public class PantallaExpendedor extends JPanel {
     }
 
     /**
-     * Metodo que sube fotos de los productos que quedan en la maquina,
+     * Método que sube fotos de los productos que quedan en la maquina,
      * Y sirve para manejar las interacciones de getvuelto, o getproducto a nivel grafico
      * @param G gráficos para dibujar
      */
@@ -189,7 +189,12 @@ public class PantallaExpendedor extends JPanel {
         }
         return al;
     }
-    public void setProductoSeleccionado(int x) {
-        productoSeleccionado = x;
+
+    /**
+     * Cambia el productoSeleccionado
+     * @param n producto seleccionado en el expendedor
+     */
+    public void setProductoSeleccionado(int n) {
+        productoSeleccionado = n;
     }
 }

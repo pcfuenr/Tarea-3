@@ -1,7 +1,5 @@
 package org.Logica;
 
-import java.util.ArrayList;
-
 /**
  * Expendedor al que se le puede comprar un artículo seleccionado a cambio de una moneda
  */
@@ -285,7 +283,7 @@ public class Expendedor {
         }
     }
     /**
-     * Funcion para obtener la cantidad de productos que quedan en cada deposito
+     * Método para obtener la cantidad de productos que quedan en cada deposito
      * @param n indica el deposito de productos que se quiere
      * @return deposito de productos
      */
