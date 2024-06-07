@@ -286,16 +286,16 @@ public class Expendedor {
     }
     /**
      * Funcion para obtener la cantidad de productos que quedan en cada deposito
-     * @param producto indica el deposito de productos que se quiere
+     * @param n indica el deposito de productos que se quiere
      * @return deposito de productos
      */
-    public Deposito<Producto> getDeposito(String producto) {
-        return switch (producto) {
-            case "coca" -> coca;
-            case "sprite" -> sprite;
-            case "fanta" -> fanta;
-            case "snickers" -> snickers;
-            case "super8" -> super8;
+    public Deposito<Producto> getDeposito(int n) {
+        return switch (n) {
+            case 0 -> coca;
+            case 1 -> sprite;
+            case 2 -> fanta;
+            case 3 -> snickers;
+            case 4 -> super8;
             default -> null;
         };
     }

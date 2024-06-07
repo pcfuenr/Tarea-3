@@ -6,6 +6,8 @@ import org.Logica.Expendedor;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -36,11 +38,23 @@ public class PantallaExpendedor extends JPanel {
     public PantallaExpendedor(Expendedor expendedor){
         super();
         exp = expendedor;
-
         setBackground(Color.black);
         try {
             imagen = ImageIO.read(new File("src/main/java/org/Grafica/Imagenes/Expende.jpg"));
         }catch (IOException e){}
+
+        this.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                /*if (!exp.getDeposito(Articulos.COCA.ordinal()).checkObject()) {
+
+                }*/
+            }
+            public void mousePressed(MouseEvent e) {}
+            public void mouseReleased(MouseEvent e) {}
+            public void mouseEntered(MouseEvent e) {}
+            public void mouseExited(MouseEvent e) {}
+        });
     }
 
     /**
@@ -58,7 +72,7 @@ public class PantallaExpendedor extends JPanel {
                 remove(i);
             }
         }
-        coca = agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Coca.jpg")).getImage(),exp.getDeposito("coca").getTamano(),55);
+        coca = agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Coca.jpg")).getImage(),exp.getDeposito(Articulos.COCA.ordinal()).getTamano(),55);
         for (JLabel i : coca) {
             add(i);
         }
@@ -67,7 +81,7 @@ public class PantallaExpendedor extends JPanel {
                 remove(i);
             }
         }
-        sprite = agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Sprite.jpg")).getImage(),exp.getDeposito("sprite").getTamano(),180);
+        sprite = agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Sprite.jpg")).getImage(),exp.getDeposito(Articulos.SPRITE.ordinal()).getTamano(),180);
         for (JLabel i : sprite) {
             add(i);
         }
@@ -76,7 +90,7 @@ public class PantallaExpendedor extends JPanel {
                 remove(i);
             }
         }
-        fanta = agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Fanta.jpg")).getImage(),exp.getDeposito("fanta").getTamano(),305);
+        fanta = agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Fanta.jpg")).getImage(),exp.getDeposito(Articulos.FANTA.ordinal()).getTamano(),305);
         for (JLabel i : fanta) {
             add(i);
         }
@@ -85,7 +99,7 @@ public class PantallaExpendedor extends JPanel {
                 remove(i);
             }
         }
-        snickers = agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Snickers.png")).getImage(),exp.getDeposito("snickers").getTamano(),420);
+        snickers = agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Snickers.png")).getImage(),exp.getDeposito(Articulos.SNICKERS.ordinal()).getTamano(),420);
         for (JLabel i : snickers) {
             add(i);
         }
@@ -94,7 +108,7 @@ public class PantallaExpendedor extends JPanel {
                 remove(i);
             }
         }
-        super8 = agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Super8.jpg")).getImage(),exp.getDeposito("super8").getTamano(),535);
+        super8 = agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Super8.jpg")).getImage(),exp.getDeposito(Articulos.SUPER8.ordinal()).getTamano(),535);
         for (JLabel i : super8) {
             add(i);
         }

@@ -1,8 +1,6 @@
 package org.Grafica;
 
-import org.Logica.Comprador;
 import org.Logica.Expendedor;
-import org.Logica.Moneda100;
 
 import javax.swing.*;
 import java.awt.*;
