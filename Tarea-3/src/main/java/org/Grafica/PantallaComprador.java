@@ -4,8 +4,6 @@ import org.Grafica.Botones.*;
 import org.Logica.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Panel que representa al comprador
@@ -13,11 +11,7 @@ import java.awt.event.ActionListener;
 public class PantallaComprador extends JPanel {
     /** Referencia al panel expendedor */
     private PantallaExpendedor panelExp;
-    /** representacion grafica de la moneda para seleccionar */
-    private JLabel moneda;
-    /** Representacion del producto recibido */
-    private JLabel producto;
-    /** Todos los botones necesarios para que funcione correctamente el programa*/
+    /** Botones necesarios para que funcione correctamente el programa*/
     private Boton botonConfirmar;
     private Boton botonCoca;
     private Boton botonSprite;
@@ -27,12 +21,6 @@ public class PantallaComprador extends JPanel {
     private Boton botonExtra;
     private Boton botonVuelto;
     private Boton botonTomarProducto;
-    /** Botones para seleccionar una moneda para pagar */
-    private JRadioButton moneda100;
-    private JRadioButton moneda500;
-    private JRadioButton moneda1000;
-    /** Referencia al expendedor */
-    private Expendedor exp;
     /** Deposito de productos del comprador */
     private Deposito<Producto> bolsillo = new Deposito<>();
     /** Moneda usada para pagar */
@@ -48,17 +36,17 @@ public class PantallaComprador extends JPanel {
     public PantallaComprador(Expendedor exp, PantallaExpendedor p){
         super();
         this.panelExp = p;
-        this.exp = exp;
         this.setLayout(null);
-        moneda100 = new JRadioButton("100");
+
+        JRadioButton moneda100 = new JRadioButton("100");
         moneda100.setBackground(Color.gray);
         moneda100.setBounds(5, 45, 60, 25);
         this.add(moneda100);
-        moneda500 = new JRadioButton("500");
+        JRadioButton moneda500 = new JRadioButton("500");
         moneda500.setBackground(Color.gray);
         moneda500.setBounds(5, 145, 60, 25);
         this.add(moneda500);
-        moneda1000 = new JRadioButton("1000");
+        JRadioButton moneda1000 = new JRadioButton("1000");
         moneda1000.setBackground(Color.gray);
         moneda1000.setBounds(5, 245, 60, 25);
         this.add(moneda1000);
@@ -105,9 +93,7 @@ public class PantallaComprador extends JPanel {
         botonExtra.getBoton().addActionListener(e -> {
             select = 5;
         });
-        /**
-         * Listener que incializa una compra
-         */
+
         botonConfirmar.getBoton().addActionListener(e -> {
             try {
                 exp.comprarProducto(coin, select);
@@ -120,9 +106,6 @@ public class PantallaComprador extends JPanel {
             coin = null;
         });
 
-        /**
-         * Recibe el vuelto
-         */
         botonVuelto.getBoton().addActionListener(e -> {
             Moneda m;
             do {
@@ -130,9 +113,7 @@ public class PantallaComprador extends JPanel {
             } while (m != null);
             panelExp.repaint();
         });
-        /**
-         * Agarra el producto comprado
-         */
+
         botonTomarProducto.getBoton().addActionListener(e -> {
             if (exp.checkProducto()) {
                 bolsillo.addObject(exp.getProducto());
@@ -147,11 +128,12 @@ public class PantallaComprador extends JPanel {
 
     /**
      * Implementacion de paintcomponent necesaria para seleccionar la moneda a usar a nivel visual
-     * @param G objeto basico para renderizar la grafica
+     * @param G gráficos para dibujar
      */
     @Override
     public void paintComponent(Graphics G){
         super.paintComponent(G);
+        JLabel moneda;
         moneda = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/100.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH)));
         moneda.setBounds(70, 5, 100, 100);
         this.add(moneda);

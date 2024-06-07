@@ -19,7 +19,7 @@ public class Deposito<T>{
     public void addObject(T obj){
         al.add(obj);
     }
-    public int getTamaño(){
+    public int getTamano(){
         return al.size();
     }
 }
