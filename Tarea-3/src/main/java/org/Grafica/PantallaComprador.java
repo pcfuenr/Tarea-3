@@ -64,12 +64,15 @@ public class PantallaComprador extends JPanel {
 
         moneda100.addActionListener(e -> {
             coin = new Moneda100();
+            panelExp.setMonedaSeleccionada(100);
         });
         moneda500.addActionListener(e -> {
             coin = new Moneda500();
+            panelExp.setMonedaSeleccionada(500);
         });
         moneda1000.addActionListener(e -> {
             coin = new Moneda1000();
+            panelExp.setMonedaSeleccionada(1000);
         });
 
         botonCoca = new BotonCoca(p);
@@ -119,6 +122,7 @@ public class PantallaComprador extends JPanel {
                 m = exp.getVuelto();
                 billetera.addObject(m);
             } while (m != null);
+            billetera.getObject();
             panelExp.repaint();
             repaint();
         });
@@ -154,11 +158,11 @@ public class PantallaComprador extends JPanel {
         moneda.setBounds(75, 205, 206, 100);
         this.add(moneda);
 
-        if (!bolsilloVisual.isEmpty()) {
+        /**if (!bolsilloVisual.isEmpty()) {
             for (JLabel i : bolsilloVisual) {
                 remove(i);
             }
-        }
+        }*/
         if (!billeteraVisual.isEmpty()) {
             for (JLabel i : billeteraVisual) {
                 remove(i);
@@ -176,10 +180,9 @@ public class PantallaComprador extends JPanel {
     public ArrayList<JLabel> agregarImagenMonedas(Image i){
         ArrayList<JLabel> al = new ArrayList<>();
         JLabel producto;
-        System.out.println(billetera.getTamano());
         for(int j=0;j<billetera.getTamano();j++) {
             producto = new JLabel(new ImageIcon(i.getScaledInstance(30, 30, Image.SCALE_SMOOTH)));
-            producto.setBounds(5+(30*j), 400, 30, 30);
+            producto.setBounds(1+(15*j), 400, 30, 30);
             al.add(producto);
         }
         return al;
@@ -193,5 +196,8 @@ public class PantallaComprador extends JPanel {
             al.add(producto);
         }
         return al;
+    }
+    public String getMonedaSeleccionada(){
+        return getMonedaSeleccionada();
     }
 }

@@ -1,9 +1,6 @@
 package org.Grafica;
 
-import org.Logica.Articulos;
-import org.Logica.Deposito;
-import org.Logica.Expendedor;
-import org.Logica.Moneda;
+import org.Logica.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -35,6 +32,8 @@ public class PantallaExpendedor extends JPanel {
     /** Deposito de monedas del expendedor */
     private Deposito<Moneda> deposito;
     private ArrayList<JLabel> depositoVisual=new ArrayList<>();
+    /** Moneda seleccionada para pagar */
+    private int monedaSeleccionada;
 
     /**
      * Constructor que crea la pantalla expendedor y sube la foto del expendedor.
@@ -178,17 +177,27 @@ public class PantallaExpendedor extends JPanel {
             add(productoSacar);
         }
 
-        if (!depositoVisual.isEmpty()) {
-            for (JLabel i : depositoVisual) {
-                remove(i);
-            }
+        switch (monedaSeleccionada) {
+            case 100:
+                depositoVisual = agregarImagenMonedas((new ImageIcon("src/main/java/org/Grafica/Imagenes/100.png")).getImage());
+                for (JLabel i : depositoVisual) {
+                    add(i);
+                }
+                break;
+            case 500:
+                depositoVisual = agregarImagenMonedas((new ImageIcon("src/main/java/org/Grafica/Imagenes/500.png")).getImage());
+                for (JLabel i : depositoVisual) {
+                    add(i);
+                }
+                break;
+            case 1000:
+                depositoVisual = agregarImagenMonedas((new ImageIcon("src/main/java/org/Grafica/Imagenes/1000.jpg")).getImage());
+                for (JLabel i : depositoVisual) {
+                    add(i);
+                }
+                break;
+            default:
         }
-
-        depositoVisual=agregarImagenMonedas((new ImageIcon("src/main/java/org/Grafica/Imagenes/100.png")).getImage());
-        for (JLabel i : depositoVisual) {
-            add(i);
-        }
-
     }
 
     /**
@@ -210,11 +219,20 @@ public class PantallaExpendedor extends JPanel {
     public ArrayList<JLabel> agregarImagenMonedas(Image i){
         ArrayList<JLabel> al = new ArrayList<>();
         JLabel producto;
-        System.out.println(deposito.getTamano());
         for(int j=0;j<deposito.getTamano();j++) {
-            producto = new JLabel(new ImageIcon(i.getScaledInstance(30, 30, Image.SCALE_SMOOTH)));
-            producto.setBounds(5+(30*j), 400, 30, 30);
-            al.add(producto);
+            if(deposito.verObject(j) instanceof Moneda1000) {
+                producto = new JLabel(new ImageIcon(i.getScaledInstance(30, 30, Image.SCALE_SMOOTH)));
+                producto.setBounds(10 + (20 * j), 700, 30, 30);
+                al.add(producto);
+            } else if (deposito.verObject(j) instanceof Moneda500) {
+                producto = new JLabel(new ImageIcon(i.getScaledInstance(30, 30, Image.SCALE_SMOOTH)));
+                producto.setBounds(10 + (20 * j), 680, 30, 30);
+                al.add(producto);
+            } else if (deposito.verObject(j) instanceof Moneda100){
+                producto = new JLabel(new ImageIcon(i.getScaledInstance(30, 30, Image.SCALE_SMOOTH)));
+                producto.setBounds(10 + (20 * j), 660, 30, 30);
+                al.add(producto);
+            }
         }
         return al;
     }
@@ -225,5 +243,8 @@ public class PantallaExpendedor extends JPanel {
      */
     public void setProductoSeleccionado(int n) {
         productoSeleccionado = n;
+    }
+    public void setMonedaSeleccionada(int x){
+        monedaSeleccionada=x;
     }
 }
