@@ -36,9 +36,9 @@ public class PantallaComprador extends JPanel {
     /** Deposito de productos del comprador */
     private Deposito<Producto> bolsillo = new Deposito<>();
     /** Moneda usada para pagar */
-    private Moneda coin;
+    private Moneda coin = null;
     /** Para seleccionar producto */
-    private int select;
+    private int select = -1;
 
     /**
      * Metodo constructor que crea los botones y los listeners
@@ -116,6 +116,8 @@ public class PantallaComprador extends JPanel {
             }
             panelExp.productoSeleccionado = select;
             panelExp.repaint();
+            select = -1;
+            coin = null;
         });
 
         /**
