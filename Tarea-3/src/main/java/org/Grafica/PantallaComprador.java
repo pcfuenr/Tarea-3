@@ -164,7 +164,7 @@ public class PantallaComprador extends JPanel {
                     case "fanta":
                         fantas+=1;
                         break;
-                    case "snicker":
+                    case "snickers":
                         snickers+=1;
                         break;
                     case "super8":
