@@ -115,6 +115,7 @@ public class PantallaComprador extends JPanel {
         });
 
         botonConfirmar.getBoton().addActionListener(e -> {
+            noException = true;
             try {
                 exp.comprarProducto(coin, select);
             } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayProductoException ex) {

@@ -15,7 +15,7 @@ public class MiVentana extends JFrame {
         super();
         pantalla= new PantallaPrincipal();
         this.setTitle("Expendedor");
-        setSize(1000, 900);
+        setSize(1600, 900);
         add(pantalla);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
