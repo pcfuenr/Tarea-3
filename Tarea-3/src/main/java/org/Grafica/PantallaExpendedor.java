@@ -29,11 +29,10 @@ public class PantallaExpendedor extends JPanel {
     private Expendedor exp;
     /** producto seleccionado por defecto -1*/
     private int productoSeleccionado = -1;
-    /** Deposito de monedas del expendedor */
-    private Deposito<Moneda> deposito;
-    private ArrayList<JLabel> depositoVisual=new ArrayList<>();
-    /** Moneda seleccionada para pagar */
-    private int monedaSeleccionada;
+    /** Compras con exito con cierta moneda*/
+    private int moneda100=0;
+    private int moneda500=0;
+    private int moneda1000=0;
 
     /**
      * Constructor que crea la pantalla expendedor y sube la foto del expendedor.
@@ -42,7 +41,6 @@ public class PantallaExpendedor extends JPanel {
     public PantallaExpendedor(Expendedor expendedor){
         super();
         exp = expendedor;
-        deposito=exp.getMonedas();
         setBackground(Color.black);
         try {
             imagen = ImageIO.read(new File("src/main/java/org/Grafica/Imagenes/Expende.jpg"));
@@ -177,27 +175,9 @@ public class PantallaExpendedor extends JPanel {
             add(productoSacar);
         }
 
-        switch (monedaSeleccionada) {
-            case 100:
-                depositoVisual = agregarImagenMonedas((new ImageIcon("src/main/java/org/Grafica/Imagenes/100.png")).getImage());
-                for (JLabel i : depositoVisual) {
-                    add(i);
-                }
-                break;
-            case 500:
-                depositoVisual = agregarImagenMonedas((new ImageIcon("src/main/java/org/Grafica/Imagenes/500.png")).getImage());
-                for (JLabel i : depositoVisual) {
-                    add(i);
-                }
-                break;
-            case 1000:
-                depositoVisual = agregarImagenMonedas((new ImageIcon("src/main/java/org/Grafica/Imagenes/1000.jpg")).getImage());
-                for (JLabel i : depositoVisual) {
-                    add(i);
-                }
-                break;
-            default:
-        }
+        agregarMonedas((new ImageIcon("src/main/java/org/Grafica/Imagenes/1000.jpg")).getImage(),moneda1000,670);
+        agregarMonedas((new ImageIcon("src/main/java/org/Grafica/Imagenes/500.png")).getImage(),moneda500,650);
+        agregarMonedas((new ImageIcon("src/main/java/org/Grafica/Imagenes/100.png")).getImage(),moneda100,630);
     }
 
     /**
@@ -216,25 +196,13 @@ public class PantallaExpendedor extends JPanel {
         }
         return al;
     }
-    public ArrayList<JLabel> agregarImagenMonedas(Image i){
-        ArrayList<JLabel> al = new ArrayList<>();
+    public void agregarMonedas(Image i, int cantidad,int altura){
         JLabel producto;
-        for(int j=0;j<deposito.getTamano();j++) {
-            if(deposito.verObject(j) instanceof Moneda1000) {
-                producto = new JLabel(new ImageIcon(i.getScaledInstance(30, 30, Image.SCALE_SMOOTH)));
-                producto.setBounds(10 + (20 * j), 700, 30, 30);
-                al.add(producto);
-            } else if (deposito.verObject(j) instanceof Moneda500) {
-                producto = new JLabel(new ImageIcon(i.getScaledInstance(30, 30, Image.SCALE_SMOOTH)));
-                producto.setBounds(10 + (20 * j), 680, 30, 30);
-                al.add(producto);
-            } else if (deposito.verObject(j) instanceof Moneda100){
-                producto = new JLabel(new ImageIcon(i.getScaledInstance(30, 30, Image.SCALE_SMOOTH)));
-                producto.setBounds(10 + (20 * j), 660, 30, 30);
-                al.add(producto);
-            }
+        for(int j=0;j<cantidad;j++) {
+            producto = new JLabel(new ImageIcon(i.getScaledInstance(30, 30, Image.SCALE_SMOOTH)));
+            producto.setBounds(10+(20*j), altura, 70, 100);
+            add(producto);
         }
-        return al;
     }
 
     /**
@@ -244,7 +212,13 @@ public class PantallaExpendedor extends JPanel {
     public void setProductoSeleccionado(int n) {
         productoSeleccionado = n;
     }
-    public void setMonedaSeleccionada(int x){
-        monedaSeleccionada=x;
+    public void setMoneda100(){
+        moneda100+=1;
+    }
+    public void setMoneda500(){
+        moneda500+=1;
+    }
+    public void setMoneda1000(){
+        moneda1000+=1;
     }
 }

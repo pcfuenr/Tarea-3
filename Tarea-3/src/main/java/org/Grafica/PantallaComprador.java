@@ -34,6 +34,9 @@ public class PantallaComprador extends JPanel {
     private Producto producto;
     /** Para seleccionar producto */
     private int select = -1;
+    /** Para seleccionar moneda */
+    private int selectMoneda=0;
+    private boolean noException=false;
 
     /**
      * Metodo constructor que crea los botones y los listeners
@@ -64,15 +67,15 @@ public class PantallaComprador extends JPanel {
 
         moneda100.addActionListener(e -> {
             coin = new Moneda100();
-            panelExp.setMonedaSeleccionada(100);
+            selectMoneda=100;
         });
         moneda500.addActionListener(e -> {
             coin = new Moneda500();
-            panelExp.setMonedaSeleccionada(500);
+            selectMoneda=500;
         });
         moneda1000.addActionListener(e -> {
             coin = new Moneda1000();
-            panelExp.setMonedaSeleccionada(1000);
+            selectMoneda=1000;
         });
 
         botonCoca = new BotonCoca(p);
@@ -107,8 +110,22 @@ public class PantallaComprador extends JPanel {
         botonConfirmar.getBoton().addActionListener(e -> {
             try {
                 exp.comprarProducto(coin, select);
+                noException=true;
             } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayProductoException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage(),"Error de compra" , JOptionPane.ERROR_MESSAGE);
+            }
+            if(noException){
+                switch (selectMoneda){
+                    case 100:
+                        panelExp.setMoneda100();
+                        break;
+                    case 500:
+                        panelExp.setMoneda500();
+                        break;
+                    case 1000:
+                        panelExp.setMoneda1000();
+                        break;
+                }
             }
             panelExp.setProductoSeleccionado(select);
             panelExp.repaint();
