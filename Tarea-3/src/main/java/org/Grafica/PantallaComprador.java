@@ -36,7 +36,14 @@ public class PantallaComprador extends JPanel {
     private int select = -1;
     /** Para seleccionar moneda */
     private int selectMoneda=0;
-    private boolean noException=false;
+    /** Para manejar la excepcion */
+    private boolean noException=true;
+    /** Cantidad de productos de cada tipo sacados*/
+    private int cocas=0;
+    private int sprites=0;
+    private int fantas=0;
+    private int snickers=0;
+    private int super8s=0;
 
     /**
      * Metodo constructor que crea los botones y los listeners
@@ -110,9 +117,9 @@ public class PantallaComprador extends JPanel {
         botonConfirmar.getBoton().addActionListener(e -> {
             try {
                 exp.comprarProducto(coin, select);
-                noException=true;
             } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayProductoException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage(),"Error de compra" , JOptionPane.ERROR_MESSAGE);
+                noException=false;
             }
             if(noException){
                 switch (selectMoneda){
@@ -146,7 +153,25 @@ public class PantallaComprador extends JPanel {
 
         botonTomarProducto.getBoton().addActionListener(e -> {
             if (exp.checkProducto()) {
-                bolsillo.addObject(exp.getProducto());
+                Producto alimento = exp.getProducto();
+                switch (alimento.consumir()){
+                    case "cocacola":
+                        cocas+=1;
+                        break;
+                    case "sprite":
+                        sprites+=1;
+                        break;
+                    case "fanta":
+                        fantas+=1;
+                        break;
+                    case "snicker":
+                        snickers+=1;
+                        break;
+                    case "super8":
+                        super8s+=1;
+                        break;
+                }
+                bolsillo.addObject(alimento);
                 panelExp.repaint();
             } else {
                 panelExp.repaint();
@@ -175,11 +200,6 @@ public class PantallaComprador extends JPanel {
         moneda.setBounds(75, 205, 206, 100);
         this.add(moneda);
 
-        /**if (!bolsilloVisual.isEmpty()) {
-            for (JLabel i : bolsilloVisual) {
-                remove(i);
-            }
-        }*/
         if (!billeteraVisual.isEmpty()) {
             for (JLabel i : billeteraVisual) {
                 remove(i);
@@ -189,10 +209,13 @@ public class PantallaComprador extends JPanel {
         for (JLabel i : billeteraVisual) {
             add(i);
         }
-        bolsilloVisual = agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Coca.jpg")).getImage());
-        for (JLabel i : bolsilloVisual) {
-            add(i);
-        }
+
+        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Coca.jpg")).getImage(),cocas,430);
+        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Sprite.jpg")).getImage(),sprites,460);
+        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Fanta.jpg")).getImage(),fantas,490);
+        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Snickers.png")).getImage(),snickers,520);
+        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Super8.jpg")).getImage(),super8s,550);
+
     }
     public ArrayList<JLabel> agregarImagenMonedas(Image i){
         ArrayList<JLabel> al = new ArrayList<>();
@@ -204,17 +227,12 @@ public class PantallaComprador extends JPanel {
         }
         return al;
     }
-    public ArrayList<JLabel> agregarImagenProductos(Image i){
-        ArrayList<JLabel> al = new ArrayList<>();
+    public void agregarImagenProductos(Image i, int cantidad,int altura){
         JLabel producto;
-        for(int j=0;j<bolsillo.getTamano();j++) {
+        for(int j=0;j<cantidad;j++) {
             producto = new JLabel(new ImageIcon(i.getScaledInstance(30, 30, Image.SCALE_SMOOTH)));
-            producto.setBounds(5+(25*j), 500, 30, 30);
-            al.add(producto);
+            producto.setBounds(10+(20*j), altura, 30, 30);
+            add(producto);
         }
-        return al;
-    }
-    public String getMonedaSeleccionada(){
-        return getMonedaSeleccionada();
     }
 }
