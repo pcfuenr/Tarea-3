@@ -4,6 +4,7 @@ import org.Grafica.Botones.*;
 import org.Logica.*;
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Panel que representa al comprador
@@ -23,8 +24,14 @@ public class PantallaComprador extends JPanel {
     private Boton botonTomarProducto;
     /** Deposito de productos del comprador */
     private Deposito<Producto> bolsillo = new Deposito<>();
-    /** Moneda usada para pagar */
+    private ArrayList<JLabel> bolsilloVisual=new ArrayList<>();
+    /** Deposito de monedas del comprador */
+    private Deposito<Moneda> billetera =new Deposito<>();
+    private ArrayList<JLabel> billeteraVisual=new ArrayList<>();
+    /** Moneda usada para pagar y guardar monedas en la billetera*/
     private Moneda coin = null;
+    /** Producto usado para guardar en bolsillo */
+    private Producto producto;
     /** Para seleccionar producto */
     private int select = -1;
 
@@ -110,8 +117,10 @@ public class PantallaComprador extends JPanel {
             Moneda m;
             do {
                 m = exp.getVuelto();
+                billetera.addObject(m);
             } while (m != null);
             panelExp.repaint();
+            repaint();
         });
 
         botonTomarProducto.getBoton().addActionListener(e -> {
@@ -121,9 +130,10 @@ public class PantallaComprador extends JPanel {
             } else {
                 panelExp.repaint();
             }
+            repaint();
         });
-
         setBackground(Color.gray);
+
     }
 
     /**
@@ -131,7 +141,7 @@ public class PantallaComprador extends JPanel {
      * @param G gráficos para dibujar
      */
     @Override
-    public void paintComponent(Graphics G){
+    public void paintComponent(Graphics G) {
         super.paintComponent(G);
         JLabel moneda;
         moneda = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/100.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH)));
@@ -143,5 +153,45 @@ public class PantallaComprador extends JPanel {
         moneda = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/1000.jpg").getImage().getScaledInstance(206, 100, Image.SCALE_SMOOTH)));
         moneda.setBounds(75, 205, 206, 100);
         this.add(moneda);
+
+        if (!bolsilloVisual.isEmpty()) {
+            for (JLabel i : bolsilloVisual) {
+                remove(i);
+            }
+        }
+        if (!billeteraVisual.isEmpty()) {
+            for (JLabel i : billeteraVisual) {
+                remove(i);
+            }
+        }
+        billeteraVisual = agregarImagenMonedas((new ImageIcon("src/main/java/org/Grafica/Imagenes/100.png")).getImage());
+        for (JLabel i : billeteraVisual) {
+            add(i);
+        }
+        bolsilloVisual = agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Coca.jpg")).getImage());
+        for (JLabel i : bolsilloVisual) {
+            add(i);
+        }
+    }
+    public ArrayList<JLabel> agregarImagenMonedas(Image i){
+        ArrayList<JLabel> al = new ArrayList<>();
+        JLabel producto;
+        System.out.println(billetera.getTamano());
+        for(int j=0;j<billetera.getTamano();j++) {
+            producto = new JLabel(new ImageIcon(i.getScaledInstance(30, 30, Image.SCALE_SMOOTH)));
+            producto.setBounds(5+(30*j), 400, 30, 30);
+            al.add(producto);
+        }
+        return al;
+    }
+    public ArrayList<JLabel> agregarImagenProductos(Image i){
+        ArrayList<JLabel> al = new ArrayList<>();
+        JLabel producto;
+        for(int j=0;j<bolsillo.getTamano();j++) {
+            producto = new JLabel(new ImageIcon(i.getScaledInstance(30, 30, Image.SCALE_SMOOTH)));
+            producto.setBounds(5+(25*j), 500, 30, 30);
+            al.add(producto);
+        }
+        return al;
     }
 }

@@ -1,7 +1,9 @@
 package org.Grafica;
 
 import org.Logica.Articulos;
+import org.Logica.Deposito;
 import org.Logica.Expendedor;
+import org.Logica.Moneda;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -30,6 +32,9 @@ public class PantallaExpendedor extends JPanel {
     private Expendedor exp;
     /** producto seleccionado por defecto -1*/
     private int productoSeleccionado = -1;
+    /** Deposito de monedas del expendedor */
+    private Deposito<Moneda> deposito;
+    private ArrayList<JLabel> depositoVisual=new ArrayList<>();
 
     /**
      * Constructor que crea la pantalla expendedor y sube la foto del expendedor.
@@ -38,6 +43,7 @@ public class PantallaExpendedor extends JPanel {
     public PantallaExpendedor(Expendedor expendedor){
         super();
         exp = expendedor;
+        deposito=exp.getMonedas();
         setBackground(Color.black);
         try {
             imagen = ImageIO.read(new File("src/main/java/org/Grafica/Imagenes/Expende.jpg"));
@@ -171,6 +177,18 @@ public class PantallaExpendedor extends JPanel {
             productoSacar.setBounds(406, 550, 62, 80);
             add(productoSacar);
         }
+
+        if (!depositoVisual.isEmpty()) {
+            for (JLabel i : depositoVisual) {
+                remove(i);
+            }
+        }
+
+        depositoVisual=agregarImagenMonedas((new ImageIcon("src/main/java/org/Grafica/Imagenes/100.png")).getImage());
+        for (JLabel i : depositoVisual) {
+            add(i);
+        }
+
     }
 
     /**
@@ -185,6 +203,17 @@ public class PantallaExpendedor extends JPanel {
         for(int j=0;j<cantidad;j++) {
             producto = new JLabel(new ImageIcon(i.getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
             producto.setBounds(50+(63*j), altura, 70, 100);
+            al.add(producto);
+        }
+        return al;
+    }
+    public ArrayList<JLabel> agregarImagenMonedas(Image i){
+        ArrayList<JLabel> al = new ArrayList<>();
+        JLabel producto;
+        System.out.println(deposito.getTamano());
+        for(int j=0;j<deposito.getTamano();j++) {
+            producto = new JLabel(new ImageIcon(i.getScaledInstance(30, 30, Image.SCALE_SMOOTH)));
+            producto.setBounds(5+(30*j), 400, 30, 30);
             al.add(producto);
         }
         return al;

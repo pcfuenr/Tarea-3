@@ -297,4 +297,7 @@ public class Expendedor {
             default -> null;
         };
     }
+    public Deposito<Moneda> getMonedas(){
+        return monedas;
+    }
 }
