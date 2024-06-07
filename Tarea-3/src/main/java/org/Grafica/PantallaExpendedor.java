@@ -46,9 +46,22 @@ public class PantallaExpendedor extends JPanel {
         this.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                /*if (!exp.getDeposito(Articulos.COCA.ordinal()).checkObject()) {
-
-                }*/
+                if (!exp.getDeposito(Articulos.COCA.ordinal()).checkObject()) {
+                    exp.llenarDeposito(Articulos.COCA.ordinal());
+                }
+                if (!exp.getDeposito(Articulos.SPRITE.ordinal()).checkObject()) {
+                    exp.llenarDeposito(Articulos.SPRITE.ordinal());
+                }
+                if (!exp.getDeposito(Articulos.FANTA.ordinal()).checkObject()) {
+                    exp.llenarDeposito(Articulos.FANTA.ordinal());
+                }
+                if (!exp.getDeposito(Articulos.SNICKERS.ordinal()).checkObject()) {
+                    exp.llenarDeposito(Articulos.SNICKERS.ordinal());
+                }
+                if (!exp.getDeposito(Articulos.SUPER8.ordinal()).checkObject()) {
+                    exp.llenarDeposito(Articulos.SUPER8.ordinal());
+                }
+                repaint();
             }
             public void mousePressed(MouseEvent e) {}
             public void mouseReleased(MouseEvent e) {}
