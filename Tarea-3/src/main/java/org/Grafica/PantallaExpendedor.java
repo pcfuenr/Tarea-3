@@ -27,7 +27,7 @@ public class PantallaExpendedor extends JPanel {
     /** Referencia expendedor */
     private Expendedor exp;
     /** producto seleccionado por defecto -1*/
-    public int productoSeleccionado = -1;
+    private int productoSeleccionado = -1;
 
     /**
      * Constructor que crea la pantalla expendedor y sube la foto del expendedor.
@@ -70,37 +70,37 @@ public class PantallaExpendedor extends JPanel {
             if (exp.checkProducto()) {
                 if (productoSeleccionado == Articulos.COCA.ordinal()) {
                     productoSacar = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/Coca.jpg").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
-                    productoSacar.setBounds(412, 550, 50, 80);
+                    productoSacar.setBounds(406, 550, 62, 80);
                     add(productoSacar);
                 } else if (productoSeleccionado == Articulos.SPRITE.ordinal()) {
                     productoSacar = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/Sprite.jpg").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
-                    productoSacar.setBounds(412, 550, 50, 80);
+                    productoSacar.setBounds(406, 550, 62, 80);
                     add(productoSacar);
                 } else if (productoSeleccionado == Articulos.FANTA.ordinal()) {
                     productoSacar = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/Fanta.jpg").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
-                    productoSacar.setBounds(412, 550, 50, 80);
+                    productoSacar.setBounds(406, 550, 62, 80);
                     add(productoSacar);
                 } else if (productoSeleccionado == Articulos.SNICKERS.ordinal()) {
                     productoSacar = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/Snickers.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
-                    productoSacar.setBounds(412, 550, 50, 80);
+                    productoSacar.setBounds(406, 550, 62, 80);
                     add(productoSacar);
                 } else  if (productoSeleccionado == Articulos.SUPER8.ordinal()) {
                     productoSacar = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/Super8.jpg").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
-                    productoSacar.setBounds(412, 550, 50, 80);
+                    productoSacar.setBounds(406, 550, 62, 80);
                     add(productoSacar);
                 } else {
                     productoSacar = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/blank.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
-                    productoSacar.setBounds(412, 550, 50, 80);
+                    productoSacar.setBounds(406, 550, 62, 80);
                     add(productoSacar);
                 }
             } else {
                 productoSacar = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/blank.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
-                productoSacar.setBounds(412, 550, 50, 80);
+                productoSacar.setBounds(406, 550, 62, 80);
                 add(productoSacar);
             }
         } else {
             productoSacar = new JLabel(new ImageIcon(new ImageIcon("src/main/java/org/Grafica/Imagenes/blank.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
-            productoSacar.setBounds(412, 550, 50, 80);
+            productoSacar.setBounds(406, 550, 62, 80);
             add(productoSacar);
         }
     }
@@ -117,5 +117,8 @@ public class PantallaExpendedor extends JPanel {
             producto.setBounds(50+(63*j), altura, 70, 100);
             add(producto);
         }
+    }
+    public void setProductoSeleccionado(int x) {
+        productoSeleccionado = x;
     }
 }

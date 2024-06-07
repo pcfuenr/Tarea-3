@@ -114,7 +114,7 @@ public class PantallaComprador extends JPanel {
             } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayProductoException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage(),"Error de compra" , JOptionPane.ERROR_MESSAGE);
             }
-            panelExp.productoSeleccionado = select;
+            panelExp.setProductoSeleccionado(select);
             panelExp.repaint();
             select = -1;
             coin = null;
