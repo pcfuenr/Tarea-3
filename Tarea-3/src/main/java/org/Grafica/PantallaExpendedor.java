@@ -1,19 +1,15 @@
 package org.Grafica;
 
-import org.Grafica.Botones.*;
 import org.Logica.Articulos;
-import org.Logica.CocaCola;
 import org.Logica.Expendedor;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Clase que representa el expendedor
@@ -22,7 +18,11 @@ public class PantallaExpendedor extends JPanel {
     /** Para subir imagenes*/
     private BufferedImage imagen;
     /** Labels para subir y quitar imagenes */
-    private JLabel producto;
+    private ArrayList<JLabel> coca = new ArrayList<>();
+    private ArrayList<JLabel> sprite = new ArrayList<>();
+    private ArrayList<JLabel> fanta = new ArrayList<>();
+    private ArrayList<JLabel> snickers = new ArrayList<>();
+    private ArrayList<JLabel> super8 = new ArrayList<>();
     private JLabel productoSacar = null;
     /** Referencia expendedor */
     private Expendedor exp;
@@ -52,11 +52,52 @@ public class PantallaExpendedor extends JPanel {
     public void paintComponent(Graphics G){
         super.paintComponent(G);
         G.drawImage(imagen,0,0,getWidth(),getHeight(),this);
-        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Coca.jpg")).getImage(),exp.getDeposito("coca").getTamano(),55);
-        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Sprite.jpg")).getImage(),exp.getDeposito("sprite").getTamano(),180);
-        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Fanta.jpg")).getImage(),exp.getDeposito("fanta").getTamano(),305);
-        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Snickers.png")).getImage(),exp.getDeposito("snickers").getTamano(),420);
-        agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Super8.jpg")).getImage(),exp.getDeposito("super8").getTamano(),535);
+
+        if (!coca.isEmpty()) {
+            for (JLabel i : coca) {
+                remove(i);
+            }
+        }
+        coca = agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Coca.jpg")).getImage(),exp.getDeposito("coca").getTamano(),55);
+        for (JLabel i : coca) {
+            add(i);
+        }
+        if (!sprite.isEmpty()) {
+            for (JLabel i : sprite) {
+                remove(i);
+            }
+        }
+        sprite = agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Sprite.jpg")).getImage(),exp.getDeposito("sprite").getTamano(),180);
+        for (JLabel i : sprite) {
+            add(i);
+        }
+        if (!fanta.isEmpty()) {
+            for (JLabel i : fanta) {
+                remove(i);
+            }
+        }
+        fanta = agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Fanta.jpg")).getImage(),exp.getDeposito("fanta").getTamano(),305);
+        for (JLabel i : fanta) {
+            add(i);
+        }
+        if (!snickers.isEmpty()) {
+            for (JLabel i : snickers) {
+                remove(i);
+            }
+        }
+        snickers = agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Snickers.png")).getImage(),exp.getDeposito("snickers").getTamano(),420);
+        for (JLabel i : snickers) {
+            add(i);
+        }
+        if (!super8.isEmpty()) {
+            for (JLabel i : super8) {
+                remove(i);
+            }
+        }
+        super8 = agregarImagenProductos((new ImageIcon("src/main/java/org/Grafica/Imagenes/Super8.jpg")).getImage(),exp.getDeposito("super8").getTamano(),535);
+        for (JLabel i : super8) {
+            add(i);
+        }
 
         if (exp.checkVuelto()) {
             G.setColor(Color.ORANGE);
@@ -111,12 +152,15 @@ public class PantallaExpendedor extends JPanel {
      * @param cantidad cuantos agregaras
      * @param altura coordenada y de la pantalla expendedor
      */
-    public void agregarImagenProductos(Image i, int cantidad,int altura){
+    public ArrayList<JLabel> agregarImagenProductos(Image i, int cantidad,int altura){
+        ArrayList<JLabel> al = new ArrayList<>();
+        JLabel producto;
         for(int j=0;j<cantidad;j++) {
             producto = new JLabel(new ImageIcon(i.getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
             producto.setBounds(50+(63*j), altura, 70, 100);
-            add(producto);
+            al.add(producto);
         }
+        return al;
     }
     public void setProductoSeleccionado(int x) {
         productoSeleccionado = x;
