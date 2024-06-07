@@ -35,14 +35,6 @@ public class Deposito<T>{
             return null;
         }
     }
-    public T verObject(int x){
-        if (!al.isEmpty()) {
-            return al.get(x);
-        } else {
-            return null;
-        }
-    }
-
     /**
      * Añade un objeto al depósito
      * @param obj objeto a añadir
